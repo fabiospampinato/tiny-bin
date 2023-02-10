@@ -84,7 +84,7 @@ class ChainableBin extends Addon {
 
   }
 
-  run ( argv: string[] ): Promise<void> {
+  run ( argv?: string[] ): Promise<void> {
 
     return this.bin.run ( argv );
 
