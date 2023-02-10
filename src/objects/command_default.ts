@@ -27,7 +27,7 @@ class CommandDefault extends Command {
 
   async run ( options: ParsedArgs, argv: string[] ): Promise<void> {
 
-    const name = options._[0] || this.name;
+    const name = this.bin.commands.has ( options._[0] ) ? options._[0] : this.name;
 
     if ( options['help'] || name === 'help' ) {
 
