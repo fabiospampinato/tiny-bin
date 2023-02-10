@@ -33,7 +33,7 @@ class CommandDefault extends Command {
 
       return this.bin.commands.run ( 'help', options, argv );
 
-    } else if ( options['version'] ) {
+    } else if ( options['version'] || options['v'] ) {
 
       return this.bin.commands.run ( '_version', options, argv );
 
