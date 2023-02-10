@@ -18,7 +18,7 @@ class ChainableBinAfterCustomCommand extends Addon {
 
   }
 
-  run ( argv: string[] ): Promise<void> {
+  run ( argv?: string[] ): Promise<void> {
 
     return new ChainableBin ( this.bin ).run ( argv );
 
