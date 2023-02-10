@@ -41,8 +41,8 @@ class CommandDefault extends Command {
 
       //TODO: Detect conflicting options
 
-      const isDefault = !this.bin.commands.has ( name );
-      const command = isDefault ? this.bin.command : this.bin.commands.getOrFail ( name );
+      const isDefault = ( name === this.name );
+      const command = this.bin.commands.getOrFail ( name );
       const options = [...this.bin.command.options.getAll (), ...command.options.getAll ()];
       const minArgs = command.arguments.getAll ().filter ( arg => arg.required ).length;
 
