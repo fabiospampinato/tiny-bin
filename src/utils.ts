@@ -5,6 +5,12 @@ import levenshtein from 'tiny-levenshtein';
 
 /* MAIN */
 
+const defer = ( fn: () => void ): void => {
+
+  setTimeout ( fn, 0 );
+
+};
+
 const getClosest = ( values: string[], value: string, maxDistance: number = 3 ): string | undefined => {
 
   if ( !values.length ) return;
@@ -56,4 +62,4 @@ const sum = ( numbers: number[] ): number => {
 
 /* EXPORT */
 
-export {getClosest, identity, isUndefined, stripAnsi, sum};
+export {defer, getClosest, identity, isUndefined, stripAnsi, sum};

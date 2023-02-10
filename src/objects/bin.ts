@@ -12,6 +12,7 @@ import CommandDefault from '~/objects/command_default';
 import CommandHelp from '~/objects/command_help';
 import CommandVersion from '~/objects/command_version';
 import Option from '~/objects/option';
+import {defer} from '~/utils';
 import type Command from '~/objects/command';
 import type {BinOptions} from '~/types';
 
@@ -76,7 +77,11 @@ class Bin {
 
       if ( this.metadata.updater ) {
 
-        updater ({ name, version });
+        defer ( () => {
+
+          updater ({ name, version });
+
+        });
 
       }
 
