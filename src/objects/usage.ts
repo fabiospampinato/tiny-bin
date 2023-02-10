@@ -37,7 +37,7 @@ class Usage extends Addon {
         const commandName = isCommandDefault ? '' : command.name;
         const name = [binName, commandName].filter ( identity ).join ( ' ' );
         const commands = isCommandDefault && !command.handler ? colors.magenta ( '[command]' ) : '';
-        const args = command.handler ? command.arguments.getAll ().map ( arg => colors.yellow ( arg.name ) ).join ( ' ' ) : '';
+        const args = command.arguments.getAll ().map ( arg => colors.yellow ( arg.name ) ).join ( ' ' );
         const line = [name, commands, args].filter ( identity ).join ( ' ' );
 
         this.logger.print ( line );
