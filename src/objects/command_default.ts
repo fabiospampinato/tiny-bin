@@ -3,7 +3,7 @@
 
 import parseArgv from 'tiny-parse-argv';
 import Command from '~/objects/command';
-import {getClosest, isUndefined} from '~/utils';
+import {getClosest, isUndefined, sum} from '~/utils';
 import type Bin from '~/objects/bin';
 import type {ParsedArgs} from 'tiny-parse-argv';
 
@@ -45,6 +45,7 @@ class CommandDefault extends Command {
       const command = this.bin.commands.getOrFail ( name );
       const options = [...this.bin.command.options.getAll (), ...command.options.getAll ()];
       const minArgs = command.arguments.getAll ().filter ( arg => arg.required ).length;
+      const maxArgs = sum ( command.arguments.getAll ().map ( arg => arg.variadic ? Infinity : 1 ) );
 
       const parseArgvOptions = {
         known: <string[]> [],
@@ -90,8 +91,12 @@ class CommandDefault extends Command {
 
       const actualArgs = parsed._.length;
 
-      if ( actualArgs < minArgs ) {
-        this.bin.fail ( `Expected at least ${minArgs} arguments, but received ${actualArgs}` );
+      if ( actualArgs < minArgs || actualArgs > maxArgs ) {
+        if ( minArgs === maxArgs ) {
+          this.bin.fail ( `Expected ${minArgs} arguments, but received ${actualArgs} arguments` );
+        } else {
+          this.bin.fail ( `Expected between ${minArgs} and ${maxArgs} arguments, but received ${actualArgs} arguments` );
+        }
       }
 
       if ( isDefault ) {

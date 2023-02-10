@@ -15,6 +15,7 @@ class Argument extends Addon {
   name: string;
   description: string;
   required: boolean;
+  variadic: boolean;
 
   /* CONSTRUCTOR */
 
@@ -26,6 +27,7 @@ class Argument extends Addon {
     this.name = options.name;
     this.description = options.description;
     this.required = ( options.name[0] === '<' );
+    this.variadic = ( options.name.includes ( '...' ) );
 
     this.parse ( options.name );
 

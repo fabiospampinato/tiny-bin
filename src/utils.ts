@@ -48,6 +48,12 @@ const stripAnsi = (() => {
 
 })();
 
+const sum = ( numbers: number[] ): number => {
+
+  return numbers.reduce ( ( acc, value ) => acc + value, 0 );
+
+};
+
 /* EXPORT */
 
-export {getClosest, identity, isUndefined, stripAnsi};
+export {getClosest, identity, isUndefined, stripAnsi, sum};
