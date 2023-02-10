@@ -23,7 +23,6 @@
   ],
   "dependencies": {
     "get-current-package": "^1.0.0",
-    "grammex": "^1.0.1",
     "tiny-colors": "^2.0.1",
     "tiny-levenshtein": "^1.0.0",
     "tiny-parse-argv": "^2.1.2",

@@ -1,7 +1,6 @@
 
 /* IMPORT */
 
-import {match, or, plus, validate} from 'grammex';
 import Addon from '~/objects/addon';
 import type Bin from '~/objects/bin';
 import type {OptionData, OptionOptions} from '~/types';
@@ -44,20 +43,15 @@ class Option extends Addon {
     const shorts: string[] = [];
     const args: string[] = [];
 
-    const GRAMMAR = plus ( or ([
-      /* LONDHAND */
-      match ( /--([a-z0-9-]+)/, ( _, name ) => longs.push ( name ) ),
-      /* SHORTHAND */
-      match ( /-([a-zA-Z])/, ( _, name ) => shorts.push ( name ) ),
-      /* ARGUMENT */
-      match ( /<([^>.]+(?:\.\.\.)?)>/, ( _, name ) => args.push ( name ) ),
-      /* SPACER */
-      match ( /[\s,]/ )
-    ]));
+    const re = /--([a-z0-9-]+)|-([a-zA-Z])|<([^>.]+(?:\.\.\.)?)>|([\s,])|([^])/g;
 
-    const isValid = validate ( name, GRAMMAR, {} );
-
-    if ( !isValid ) this.bin.fail ( `Invalid option: "${name}"` );
+    name.replace ( re, ( _, long, short, arg, spacer, invalid ): string => {
+      if ( long ) longs.push ( long );
+      if ( short ) shorts.push ( short );
+      if ( arg ) args.push ( arg );
+      if ( invalid ) this.bin.fail ( `Invalid option: "${name}"` );
+      return _;
+    });
 
     if ( !longs.length && !shorts.length ) this.bin.fail ( `Option must define at least a longhand or a shorthand: "${name}"` );
 
