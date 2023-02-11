@@ -22,11 +22,12 @@
     "cli"
   ],
   "dependencies": {
+    "ansi-purge": "^1.0.0",
     "get-current-package": "^1.0.0",
-    "tiny-colors": "^2.0.1",
+    "tiny-colors": "^2.0.2",
     "tiny-levenshtein": "^1.0.0",
     "tiny-parse-argv": "^2.1.2",
-    "tiny-updater": "^3.2.2"
+    "tiny-updater": "^3.2.3"
   },
   "devDependencies": {
     "@types/node": "^18.13.0",
