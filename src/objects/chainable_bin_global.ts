@@ -22,6 +22,15 @@ class ChainableBin extends Addon {
 
   }
 
+  package ( name: string, version: string ): this {
+
+    this.bin.metadata.package = name;
+    this.bin.metadata.version = version;
+
+    return this;
+
+  }
+
   autoExit ( exiter: boolean ): this {
 
     this.bin.metadata.exiter = exiter;

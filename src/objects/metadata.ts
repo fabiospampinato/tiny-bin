@@ -12,6 +12,7 @@ class Metadata extends Addon {
 
   name: string = 'bin';
   description: string = '';
+  package: string = '';
   version: string = '0.0.0';
   colors: boolean = true;
   exiter: boolean = true;

@@ -67,23 +67,31 @@ class Bin {
 
     // process.title = this.metadata.name; //FIXME: It seems useless inside VSCODE, and not working as expected inside Terminal.app, so...
 
-    const pkg = getCurrentPackage ();
+    if ( !this.metadata.package ) {
 
-    if ( pkg ) {
+      const pkg = getCurrentPackage ();
 
-      const {name, version} = pkg;
+      if ( pkg ) {
 
-      this.metadata.version = version;
+        const {name, version} = pkg;
 
-      if ( this.metadata.updater ) {
-
-        defer ( () => {
-
-          updater ({ name, version });
-
-        });
+        this.metadata.package = name;
+        this.metadata.version = version;
 
       }
+
+    }
+
+    if ( this.metadata.package && this.metadata.updater ) {
+
+      defer ( () => {
+
+        updater ({
+          name: this.metadata.package,
+          version: this.metadata.version
+         });
+
+      });
 
     }
 
