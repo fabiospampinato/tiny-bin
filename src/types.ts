@@ -34,9 +34,8 @@ type OptionOptions = {
   description: string,
   hidden?: boolean,
   required?: boolean,
-  default?: unknown
-  // enum?: string[] //TODO
-  // isValid?: ( value: unknown ) => boolean //TODO
+  default?: unknown,
+  enum?: string[]
 };
 
 /* EXPORT */

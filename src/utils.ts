@@ -6,6 +6,12 @@ import levenshtein from 'tiny-levenshtein';
 
 /* MAIN */
 
+const castArray = <T> ( value: T | T[] ): T[] => {
+
+  return Array.isArray ( value ) ? value : [value];
+
+};
+
 const defer = ( fn: () => void ): void => {
 
   setTimeout ( fn, 0 );
@@ -48,4 +54,4 @@ const sum = ( numbers: number[] ): number => {
 
 /* EXPORT */
 
-export {defer, getClosest, identity, isUndefined, stripAnsi, sum};
+export {castArray, defer, getClosest, identity, isUndefined, stripAnsi, sum};

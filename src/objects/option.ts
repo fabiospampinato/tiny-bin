@@ -17,6 +17,7 @@ class Option extends Addon {
   hidden: boolean;
   required: boolean;
   default: unknown;
+  enum?: string[];
   data: OptionData;
 
   /* CONSTRUCTOR */
@@ -31,6 +32,7 @@ class Option extends Addon {
     this.hidden = !!options.hidden;
     this.required = !!options.required;
     this.default = options.default;
+    this.enum = options.enum;
     this.data = this.parse ( options.name );
 
   }
