@@ -40,6 +40,12 @@ const identity = <T> ( value: T ): T => {
 
 };
 
+const isArray = ( value: unknown ): value is unknown[] => {
+
+  return Array.isArray ( value );
+
+};
+
 const isUndefined = ( value: unknown ): value is undefined => {
 
   return value === undefined;
@@ -54,4 +60,4 @@ const sum = ( numbers: number[] ): number => {
 
 /* EXPORT */
 
-export {castArray, defer, getClosest, identity, isUndefined, stripAnsi, sum};
+export {castArray, defer, getClosest, identity, isArray, isUndefined, stripAnsi, sum};

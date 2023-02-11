@@ -16,6 +16,7 @@ class Option extends Addon {
   description: string;
   hidden: boolean;
   required: boolean;
+  variadic: boolean;
   default: unknown;
   enum?: string[];
   data: OptionData;
@@ -31,6 +32,7 @@ class Option extends Addon {
     this.description = options.description;
     this.hidden = !!options.hidden;
     this.required = !!options.required;
+    this.variadic = options.name.includes ( '...' );
     this.default = options.default;
     this.enum = options.enum;
     this.data = this.parse ( options.name );

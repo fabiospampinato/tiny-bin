@@ -27,7 +27,7 @@ class Argument extends Addon {
     this.name = options.name;
     this.description = options.description;
     this.required = ( options.name[0] === '<' );
-    this.variadic = ( options.name.includes ( '...' ) );
+    this.variadic = options.name.includes ( '...' );
 
     this.parse ( options.name );
 

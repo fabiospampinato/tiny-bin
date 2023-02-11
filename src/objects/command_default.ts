@@ -3,7 +3,7 @@
 
 import parseArgv from 'tiny-parse-argv';
 import Command from '~/objects/command';
-import {castArray, getClosest, isUndefined, sum} from '~/utils';
+import {castArray, getClosest, isArray, isUndefined, sum} from '~/utils';
 import type Bin from '~/objects/bin';
 import type {ParsedArgs} from 'tiny-parse-argv';
 
@@ -97,6 +97,15 @@ class CommandDefault extends Command {
           if ( enums.includes ( value ) ) return;
           this.bin.fail ( `Invalid value for "${option.data.alls[0]}" option, received "${value}" but only ${enums.map ( e => `"${e}"` ).join ( ', ' )} are supported` );
         });
+      });
+
+      options.forEach ( option => {
+        const name = option.data.alls[0];
+        const value = parsed[name];
+        if ( !isArray ( value ) ) return;
+        if ( value.length < 2 ) return;
+        if ( option.variadic ) return;
+        this.bin.fail ( `Expected 1 value for "${option.data.alls[0]}" option, but received "${value.length}" values` );
       });
 
       if ( !isDefault ) {
