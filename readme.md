@@ -18,6 +18,7 @@ At a high level this package provides:
 - Automatic typo detection, it will suggest the closest command/option if you mistype one.
 - Automatic `help` and `--help` handling, both for the bin and for each command.
 - Automatic `--version` and `-v` handling.
+- Automatic `--no-color` and `--no-colors` handling.
 
 This library has 5 primitives, bins, commands, options, arguments and actions:
 
