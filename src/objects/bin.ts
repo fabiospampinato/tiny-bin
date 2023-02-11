@@ -46,7 +46,7 @@ class Bin {
     this.command = fallback;
     this.command.options.register ( new Option ( this, { name: '--help', description: 'Display help for the command' } ) );
     this.command.options.register ( new Option ( this, { name: '--version, -v', description: 'Display the version number' } ) );
-    this.command.options.register ( new Option ( this, { name: '--no-color', description: 'Disable colored output', hidden: true } ) );
+    this.command.options.register ( new Option ( this, { name: '--no-color, --no-colors', description: 'Disable colored output', hidden: true } ) );
 
   }
 
