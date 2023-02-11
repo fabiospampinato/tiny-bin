@@ -2,6 +2,7 @@
 /* IMPORT */
 
 import getCurrentPackage from 'get-current-package';
+import process from 'node:process';
 import colors from 'tiny-colors';
 import parseArgv from 'tiny-parse-argv';
 import updater from 'tiny-updater';
