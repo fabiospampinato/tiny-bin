@@ -42,6 +42,13 @@ class CommandDefault extends Command {
       //TODO: Detect conflicting options
 
       const isDefault = ( name === this.name );
+
+      if ( isDefault && !this.handler ) {
+
+        this.bin.fail ( 'Command handler not defined for default command' );
+
+      }
+
       const command = this.bin.commands.getOrFail ( name );
       const options = [...this.bin.command.options.getAll (), ...command.options.getAll ()];
       const minArgs = command.arguments.getAll ().filter ( arg => arg.required ).length;
@@ -128,15 +135,7 @@ class CommandDefault extends Command {
 
       if ( isDefault ) {
 
-        if ( !this.handler ) {
-
-          this.bin.fail ( 'Command handler not defined for default command' );
-
-        } else {
-
-          return this.handler ( parsed, parsed._, parsed['--'] );
-
-        }
+        return this.handler! ( parsed, parsed._, parsed['--'] ); //TSC
 
       } else {
 
