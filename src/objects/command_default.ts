@@ -59,7 +59,7 @@ class CommandDefault extends Command {
         },
         onUnknown: ( options: string[] ): void => {
           const closest = getClosest ( parseArgvOptions.known, options[0] );
-          this.bin.fail ( `Unknonw option: "${options[0]}"${closest ? `. Did you mean "${closest}"?` : ''}` );
+          this.bin.fail ( `Unknown option: "${options[0]}"${closest ? `. Did you mean "${closest}"?` : ''}` );
         }
       };
 
