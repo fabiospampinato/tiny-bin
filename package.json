@@ -27,7 +27,7 @@
     "tiny-colors": "^2.0.2",
     "tiny-levenshtein": "^1.0.0",
     "tiny-parse-argv": "^2.1.2",
-    "tiny-updater": "^3.2.3"
+    "tiny-updater": "^3.4.0"
   },
   "devDependencies": {
     "@types/node": "^18.13.0",

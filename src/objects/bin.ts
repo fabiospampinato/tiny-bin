@@ -89,7 +89,8 @@ class Bin {
 
         updater ({
           name: this.metadata.package,
-          version: this.metadata.version
+          version: this.metadata.version,
+          ttl: 43_200_000
          });
 
       });
