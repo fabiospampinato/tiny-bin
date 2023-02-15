@@ -3,7 +3,7 @@
 
 import parseArgv from 'tiny-parse-argv';
 import Command from '~/objects/command';
-import {castArray, getClosest, isArray, isUndefined, sum} from '~/utils';
+import {camelCase, castArray, getClosest, isArray, isUndefined, sum} from '~/utils';
 import type Bin from '~/objects/bin';
 import type {ParsedArgs} from 'tiny-parse-argv';
 
@@ -81,8 +81,6 @@ class CommandDefault extends Command {
         parseArgvOptions.alias[first] = rest;
       });
 
-      //TODO: Maybe always camel-case options automatically
-
       const parsed = parseArgv ( argv, parseArgvOptions );
 
       options.forEach ( option => {
@@ -106,6 +104,12 @@ class CommandDefault extends Command {
         if ( value.length < 2 ) return;
         if ( option.variadic ) return;
         this.bin.fail ( `Expected 1 value for "${option.data.alls[0]}" option, but received "${value.length}" values` );
+      });
+
+      Object.keys ( parsed ).forEach ( key => {
+        const camelKey = camelCase ( key );
+        if ( camelKey === key ) return;
+        parsed[camelKey] = parsed[key];
       });
 
       if ( !isDefault ) {

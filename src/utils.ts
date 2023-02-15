@@ -6,6 +6,22 @@ import levenshtein from 'tiny-levenshtein';
 
 /* MAIN */
 
+const camelCase = (() => {
+
+  const dividerRe = /[_.\s-]+/g;
+  const prefixRe = /^[_.\s-]+/g;
+  const upperDigitRe = /\d+[\p{Alpha}\p{N}_]/gu;
+  const upperDividerRe = /[_.\s-]+[\p{Alpha}\p{N}_]/gu;
+  const toUpperCase = ( str: string ): string => str.toUpperCase ();
+
+  return ( str: string ): string => {
+
+    return str.trim ().toLowerCase ().replace ( prefixRe, '' ).replace ( upperDigitRe, toUpperCase ).replace ( upperDividerRe, toUpperCase ).replace ( dividerRe, '' );
+
+  };
+
+})();
+
 const castArray = <T> ( value: T | T[] ): T[] => {
 
   return Array.isArray ( value ) ? value : [value];
@@ -60,4 +76,4 @@ const sum = ( numbers: number[] ): number => {
 
 /* EXPORT */
 
-export {castArray, defer, getClosest, identity, isArray, isUndefined, stripAnsi, sum};
+export {camelCase, castArray, defer, getClosest, identity, isArray, isUndefined, stripAnsi, sum};
