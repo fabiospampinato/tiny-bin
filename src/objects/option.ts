@@ -14,6 +14,7 @@ class Option extends Addon {
   id: string;
   name: string;
   description: string;
+  eager: boolean;
   hidden: boolean;
   required: boolean;
   variadic: boolean;
@@ -30,12 +31,21 @@ class Option extends Addon {
     this.id = options.name;
     this.name = options.name;
     this.description = options.description;
+    this.eager = !!options.eager;
     this.hidden = !!options.hidden;
     this.required = !!options.required;
     this.variadic = options.name.includes ( '...' );
     this.default = options.default;
     this.enum = options.enum;
     this.data = this.parse ( options.name );
+
+    if ( this.eager && !this.data.args.length ) {
+      this.bin.fail ( `Eager option must not be boolean: "${this.name}"` );
+    }
+
+    if ( this.eager && !this.variadic ) {
+      this.bin.fail ( `Eager option must be variadic: "${this.name}"` );
+    }
 
   }
 

@@ -39,6 +39,7 @@ This library has 5 primitives, bins, commands, options, arguments and actions:
   - An option is a flag that can be passed to your command.
   - Each option has a name, a description, and an implicit type (boolean or string).
   - Each option can optionally be hidden from the help page.
+  - Each option can optionally be marked as eager, so it will consume multiple consecutive values.
   - Each option can optionally be marked as required, so the library will error if it's not provided.
   - Each option can optionally have a default value.
   - Each option can optionally have an explicit list of allowed values.

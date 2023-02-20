@@ -58,6 +58,7 @@ class CommandDefault extends Command {
         known: <string[]> [],
         boolean: <string[]> [],
         string: <string[]> [],
+        eager: <string[]> [],
         required: <string[]> [],
         alias: <Record<string, string[]>> {},
         default: <Record<string, any>> {},
@@ -77,6 +78,9 @@ class CommandDefault extends Command {
         }
         if ( option.data.type === 'string' ) {
           parseArgvOptions.string.push ( ...option.data.alls );
+        }
+        if ( option.eager ) {
+          parseArgvOptions.eager.push ( ...option.data.alls );
         }
         if ( option.required ) {
           parseArgvOptions.required.push ( ...option.data.alls );

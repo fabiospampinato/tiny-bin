@@ -26,7 +26,7 @@
     "get-current-package": "^1.0.0",
     "tiny-colors": "^2.0.2",
     "tiny-levenshtein": "^1.0.0",
-    "tiny-parse-argv": "^2.1.2",
+    "tiny-parse-argv": "^2.2.0",
     "tiny-updater": "^3.4.0"
   },
   "devDependencies": {

@@ -32,6 +32,7 @@ type OptionData = {
 type OptionOptions = {
   name: string,
   description: string,
+  eager?: boolean,
   hidden?: boolean,
   required?: boolean,
   default?: unknown,
