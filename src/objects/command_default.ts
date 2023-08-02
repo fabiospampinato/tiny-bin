@@ -85,7 +85,7 @@ class CommandDefault extends Command {
         if ( option.required ) {
           parseArgvOptions.required.push ( ...option.data.alls );
         }
-        if ( !isUndefined ( option.default ) ) {
+        if ( 'default' in option ) {
           parseArgvOptions.default[option.data.alls[0]] = option.default;
         }
         const [first, ...rest] = option.data.alls;
