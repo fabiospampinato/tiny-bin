@@ -53,6 +53,7 @@ class Option extends Addon {
 
   parse ( name: string ): OptionData {
 
+    const longsPositive: string[] = [];
     const longs: string[] = [];
     const shorts: string[] = [];
     const args: string[] = [];
@@ -60,6 +61,7 @@ class Option extends Addon {
     const re = /--([a-z0-9-]+)|-([a-zA-Z])|<([^>.]+(?:\.\.\.)?)>|([\s,])|([^])/g;
 
     name.replace ( re, ( _, long, short, arg, spacer, invalid ): string => {
+      if ( long && long.startsWith ( 'no-' ) ) longsPositive.push ( long.slice ( 3 ) );
       if ( long ) longs.push ( long );
       if ( short ) shorts.push ( short );
       if ( arg ) args.push ( arg );
@@ -72,7 +74,7 @@ class Option extends Addon {
     if ( args.length > 1 ) this.bin.fail ( `Option can define at most one argument: "${name}"` );
 
     const type = args.length ? 'string' : 'boolean';
-    const alls = [...longs, ...shorts];
+    const alls = [...longsPositive, ...longs, ...shorts];
     const data: OptionData = { type, alls, longs, shorts, args };
 
     return data;
