@@ -3,7 +3,7 @@
 
 import parseArgv from 'tiny-parse-argv';
 import Command from '~/objects/command';
-import {camelCase, castArray, getClosest, isArray, isUndefined, sum} from '~/utils';
+import {camelCase, castArray, getClosest, isArray, sum} from '~/utils';
 import type Bin from '~/objects/bin';
 import type {ParsedArgs} from 'tiny-parse-argv';
 

@@ -62,12 +62,6 @@ const isArray = ( value: unknown ): value is unknown[] => {
 
 };
 
-const isUndefined = ( value: unknown ): value is undefined => {
-
-  return value === undefined;
-
-};
-
 const sum = ( numbers: number[] ): number => {
 
   return numbers.reduce ( ( acc, value ) => acc + value, 0 );
@@ -76,4 +70,4 @@ const sum = ( numbers: number[] ): number => {
 
 /* EXPORT */
 
-export {camelCase, castArray, defer, getClosest, identity, isArray, isUndefined, stripAnsi, sum};
+export {camelCase, castArray, defer, getClosest, identity, isArray, stripAnsi, sum};
