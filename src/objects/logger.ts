@@ -56,7 +56,7 @@ class Logger extends Addon {
 
       const line = row.map ( ( value, j ) => {
 
-        const paddingLength = Math.max ( 0, 1 + maxLengths[j] - raws[i][j].length );
+        const paddingLength = ( j === row.length - 1 ) ? 0 : Math.max ( 0, 1 + maxLengths[j] - raws[i][j].length );
         const padding = ' '.repeat ( paddingLength );
 
         return `${value}${padding}`;
