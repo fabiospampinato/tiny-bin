@@ -53,7 +53,11 @@ class CommandHelp extends Command {
       this.bin.command.usage.print ( this.bin.command );
       this.bin.command.arguments.print ();
       this.bin.command.options.print ();
-      this.bin.commands.print ();
+
+      if ( this.bin.commands.getLength () > 3 ) { // There are some custom commands registered
+        this.bin.commands.print ();
+      }
+
       this.logger.dedent ();
 
     }

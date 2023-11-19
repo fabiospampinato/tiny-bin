@@ -38,6 +38,12 @@ class Collection<T extends { id: string }> extends Addon {
 
   }
 
+  getLength (): number {
+
+    return this.collection.size;
+
+  }
+
   getOrFail ( id: string ): T {
 
     const value = this.get ( id );
