@@ -47,25 +47,51 @@ class Logger extends Addon {
 
   }
 
-  table ( rows: string[][] ): void {
+  table ( rows: string[][], mode: 'lines' | 'line' = 'line' ): void {
 
     const raws = rows.map ( row => row.map ( stripAnsi ) );
     const maxLengths = raws[0].map ( ( _, j ) => Math.max ( ...raws.map ( ( _, i ) => raws[i][j].length ) ) );
 
-    rows.forEach ( ( row, i ) => {
+    if ( mode === 'lines' && maxLengths.length === 2 ) { //TODO: Generalize this, even though it's not needed yet
 
-      const line = row.map ( ( value, j ) => {
+      const COLUMN = 30; //TODO: Make this customizable
+      const PADDING = 4;
 
-        const paddingLength = ( j === row.length - 1 ) ? 0 : Math.max ( 0, 1 + maxLengths[j] - raws[i][j].length );
-        const padding = ' '.repeat ( paddingLength );
+      rows.forEach ( ( [left, right], i ) => {
 
-        return `${value}${padding}`;
+        const leftNedded = stripAnsi ( left ).length + PADDING;
+        const leftAvailable = COLUMN - leftNedded;
+        const leftShortEnough = ( leftAvailable >= 2 );
+        const rightLines = right.trim ().split ( /\r?\n|\r/g );
 
-      }).join ( ' ' );
+        const line = [left, rightLines.map ( ( line, i ) => ( leftShortEnough && !i ) ? `${' '.repeat ( leftAvailable )}${line}` : `${i ? '' : '\n'}${' '.repeat ( COLUMN )}${line}` ).join ( '\n' )].join ( '' );
 
-      this.print ( line );
+        this.print ( line );
 
-    });
+      });
+
+    } else if ( mode === 'line' ) {
+
+      rows.forEach ( ( row, i ) => {
+
+        const line = row.map ( ( value, j ) => {
+
+          const paddingLength = ( j === row.length - 1 ) ? 0 : Math.max ( 0, 1 + maxLengths[j] - raws[i][j].length );
+          const padding = ' '.repeat ( paddingLength );
+
+          return `${value}${padding}`;
+
+        }).join ( ' ' );
+
+        this.print ( line );
+
+      });
+
+    } else {
+
+      throw new Error ( 'Unsupported printing mode' );
+
+    }
 
   }
 

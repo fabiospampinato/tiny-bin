@@ -12,7 +12,7 @@ class Options extends Collection<Option> {
 
   /* API */
 
-  print (): void {
+  print ( mode?: 'line' | 'lines' ): void {
 
     const options = this.getAll ();
 
@@ -44,7 +44,7 @@ class Options extends Collection<Option> {
       ]);
 
       this.logger.group ( title, () => {
-        this.logger.table ( table );
+        this.logger.table ( table, mode );
       });
 
     });

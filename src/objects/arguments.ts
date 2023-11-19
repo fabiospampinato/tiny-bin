@@ -11,7 +11,7 @@ class Arguments extends Collection<Argument> {
 
   /* API */
 
-  print (): void {
+  print ( mode?: 'line' | 'lines' ): void {
 
     const args = this.getAll ();
 
@@ -23,7 +23,7 @@ class Arguments extends Collection<Argument> {
     ]);
 
     this.logger.group ( 'ARGUMENTS', () => {
-      this.logger.table ( table );
+      this.logger.table ( table, mode );
     });
 
   }

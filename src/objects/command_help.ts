@@ -1,6 +1,7 @@
 
 /* IMPORT */
 
+import Collection from '~/objects/collection';
 import Command from '~/objects/command';
 import Argument from '~/objects/argument';
 import type Bin from '~/objects/bin';
@@ -23,6 +24,14 @@ class CommandHelp extends Command {
 
   }
 
+  /* PRIVATE API */
+
+  private getPrintMode ( collections: Collection<{ id: string, description: string }>[] ): 'line' | 'lines' {
+
+    return collections.some ( collection => collection.getAll ().some ( item => item.description.includes ( '\n' ) ) ) ? 'lines' : 'line';
+
+  }
+
   /* API */
 
   async run ( options: ParsedArgs, argv: string[] ): Promise<void> {
@@ -33,17 +42,20 @@ class CommandHelp extends Command {
     if ( name ) {
 
       const command = this.bin.commands.getOrFail ( name );
+      const mode = this.getPrintMode ([ command.arguments, command.options, this.bin.command.options ]);
 
       this.logger.indent ();
       this.logger.print ();
       this.bin.metadata.print ();
       command.usage.print ( command );
-      command.arguments.print ();
-      this.bin.command.options.print ();
-      command.options.print ();
+      command.arguments.print ( mode );
+      this.bin.command.options.print ( mode );
+      command.options.print ( mode );
       this.logger.dedent ();
 
     } else {
+
+      const mode = this.getPrintMode ([ this.bin.command.arguments, this.bin.command.options, this.bin.commands ]);
 
       //TODO: Printing multiple options groups with the same name feel a bit wrong, though the separation seems good
 
@@ -51,11 +63,11 @@ class CommandHelp extends Command {
       this.logger.print ();
       this.bin.metadata.print ();
       this.bin.command.usage.print ( this.bin.command );
-      this.bin.command.arguments.print ();
-      this.bin.command.options.print ();
+      this.bin.command.arguments.print ( mode );
+      this.bin.command.options.print ( mode );
 
       if ( this.bin.commands.getLength () > 3 ) { // There are some custom commands registered
-        this.bin.commands.print ();
+        this.bin.commands.print ( mode );
       }
 
       this.logger.dedent ();

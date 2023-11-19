@@ -13,7 +13,7 @@ class Commands extends Collection<Command> {
 
   /* API */
 
-  print (): void {
+  print ( mode?: 'line' | 'lines' ): void {
 
     const commands = this.getAll ();
 
@@ -40,7 +40,7 @@ class Commands extends Collection<Command> {
       ]);
 
       this.logger.group ( title, () => {
-        this.logger.table ( table );
+        this.logger.table ( table, mode );
       });
 
     });
