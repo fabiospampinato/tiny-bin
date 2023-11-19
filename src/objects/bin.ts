@@ -105,7 +105,7 @@ class Bin {
 
       if ( this.metadata.exiter ) {
 
-        process.exit ( 0 );
+        process.exit ();
 
       }
 
