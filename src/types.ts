@@ -18,6 +18,7 @@ type CommandHandler = {
 type CommandOptions = {
   name: string,
   description: string,
+  section?: string,
   hidden?: boolean
 };
 
@@ -32,6 +33,7 @@ type OptionData = {
 type OptionOptions = {
   name: string,
   description: string,
+  section?: string,
   eager?: boolean,
   hidden?: boolean,
   required?: boolean,

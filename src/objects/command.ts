@@ -18,6 +18,7 @@ class Command extends Addon {
   id: string;
   name: string;
   description: string;
+  section: string;
   hidden: boolean;
   arguments: Arguments = new Arguments ( this.bin );
   options: Options = new Options ( this.bin );
@@ -33,6 +34,7 @@ class Command extends Addon {
     this.id = options.name;
     this.name = options.name;
     this.description = options.description;
+    this.section = options.section || '';
     this.hidden = !!options.hidden;
 
     this.parse ( options.name );

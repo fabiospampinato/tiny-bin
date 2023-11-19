@@ -50,6 +50,25 @@ const getClosest = ( values: string[], value: string, maxDistance: number = 3 ):
 
 };
 
+const groupBy = <T, U> ( values: T[], iterator: ( value: T, index: number, values: T[] ) => U ): Map<U, T[]> => {
+
+  const groups = new Map<U, T[]>();
+
+  for ( let i = 0, l = values.length; i < l; i++ ) {
+
+    const value = values[i];
+    const key = iterator ( value, i, values );
+    const group = groups.get ( key ) || [];
+
+    group.push ( value );
+    groups.set ( key, group );
+
+  }
+
+  return groups;
+
+};
+
 const identity = <T> ( value: T ): T => {
 
   return value;
@@ -62,6 +81,26 @@ const isArray = ( value: unknown ): value is unknown[] => {
 
 };
 
+const isUndefined = ( value: unknown ): value is undefined => {
+
+  return value === undefined;
+
+};
+
+const pushBack = <T, U> ( map: Map<T, U>, key: T ): Map<T, U> => {
+
+  const value = map.get ( key );
+
+  if ( isUndefined ( value ) ) return map; //TODO: Technically "undefined" could be a valid key here
+
+  map.delete ( key );
+
+  map.set ( key, value );
+
+  return map;
+
+};
+
 const sum = ( numbers: number[] ): number => {
 
   return numbers.reduce ( ( acc, value ) => acc + value, 0 );
@@ -70,4 +109,4 @@ const sum = ( numbers: number[] ): number => {
 
 /* EXPORT */
 
-export {camelCase, castArray, defer, getClosest, identity, isArray, stripAnsi, sum};
+export {camelCase, castArray, defer, getClosest, groupBy, identity, isArray, stripAnsi, pushBack, sum};

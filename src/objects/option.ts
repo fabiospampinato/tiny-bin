@@ -14,6 +14,7 @@ class Option extends Addon {
   id: string;
   name: string;
   description: string;
+  section: string;
   eager: boolean;
   hidden: boolean;
   required: boolean;
@@ -31,6 +32,7 @@ class Option extends Addon {
     this.id = options.name;
     this.name = options.name;
     this.description = options.description;
+    this.section = options.section || '';
     this.eager = !!options.eager;
     this.hidden = !!options.hidden;
     this.required = !!options.required;

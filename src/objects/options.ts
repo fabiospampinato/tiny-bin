@@ -3,6 +3,7 @@
 
 import colors from 'tiny-colors';
 import Collection from '~/objects/collection';
+import {groupBy, pushBack} from '~/utils';
 import type Option from '~/objects/option';
 
 /* MAIN */
@@ -21,21 +22,31 @@ class Options extends Collection<Option> {
 
     if ( !optionsVisible.length ) return;
 
-    const table = optionsVisible.map ( option => [
-      [
-        [
-          ...option.data.longs.sort ().map ( long => colors.green ( `--${long}` ) ),
-          ...option.data.shorts.sort ().map ( short => colors.green ( `-${short}` ) ),
-        ].join ( ', ' ),
-        [
-          ...option.data.args.sort ().map ( arg => colors.blue ( `<${arg}>` ) )
-        ].join ( ' ' ),
-      ].join ( ' ' ),
-      option.description
-    ]);
+    const optionsBySection = pushBack ( groupBy ( optionsVisible, option => option.section.toLowerCase () ), '' );
 
-    this.logger.group ( 'OPTIONS', () => {
-      this.logger.table ( table );
+    optionsBySection.forEach ( ( options, section ) => {
+
+      if ( !options.length ) return;
+
+      const title = section ? `${section.toUpperCase ()} OPTIONS` : ( optionsBySection.size > 1 ? 'OTHER OPTIONS' : 'OPTIONS' );
+
+      const table = options.map ( option => [
+        [
+          [
+            ...option.data.longs.sort ().map ( long => colors.green ( `--${long}` ) ),
+            ...option.data.shorts.sort ().map ( short => colors.green ( `-${short}` ) ),
+          ].join ( ', ' ),
+          [
+            ...option.data.args.sort ().map ( arg => colors.blue ( `<${arg}>` ) )
+          ].join ( ' ' ),
+        ].join ( ' ' ),
+        option.description
+      ]);
+
+      this.logger.group ( title, () => {
+        this.logger.table ( table );
+      });
+
     });
 
   }

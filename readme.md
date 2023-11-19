@@ -30,6 +30,7 @@ This library has 5 primitives, bins, commands, options, arguments and actions:
 - Command:
   - A command is the function that will be executed when running your bin.
   - Each command has a name, a description, and an automatically generated usage example.
+  - Each command can optional have a section, which will be used to group commands in the help page.
   - Each command can optionally be hidden from the help page.
   - Each command can optionally have custom usage examples.
   - Each command can have multiple options.
@@ -38,6 +39,7 @@ This library has 5 primitives, bins, commands, options, arguments and actions:
 - Option:
   - An option is a flag that can be passed to your command.
   - Each option has a name, a description, and an implicit type (boolean or string).
+  - Each option can optional have a section, which will be used to group options in the help page.
   - Each option can optionally be hidden from the help page.
   - Each option can optionally be marked as eager, so it will consume multiple consecutive values.
   - Each option can optionally be marked as required, so the library will error if it's not provided.
