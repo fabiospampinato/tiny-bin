@@ -24,9 +24,9 @@
   "dependencies": {
     "ansi-purge": "^1.0.0",
     "get-current-package": "^1.0.0",
-    "tiny-colors": "^2.0.2",
+    "tiny-colors": "^2.1.2",
     "tiny-levenshtein": "^1.0.0",
-    "tiny-parse-argv": "^2.2.0",
+    "tiny-parse-argv": "^2.3.0",
     "tiny-updater": "^3.5.1"
   },
   "devDependencies": {

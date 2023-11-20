@@ -62,6 +62,9 @@ class CommandDefault extends Command {
         required: <string[]> [],
         alias: <Record<string, string[]>> {},
         default: <Record<string, any>> {},
+        onInvalid: ( options: string[] ): void => {
+          this.bin.fail ( `Invalid value for "${options[0]}" option` );
+        },
         onMissing: ( options: string[] ): void => {
           this.bin.fail ( `Missing required option: "${options[0]}"` );
         },
