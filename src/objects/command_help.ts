@@ -37,7 +37,8 @@ class CommandHelp extends Command {
   async run ( options: ParsedArgs, argv: string[] ): Promise<void> {
 
     const [arg1, arg2] = options._;
-    const name = ( arg1 === 'help' ) ? arg2 || ( options['help'] ? arg1 : '' ) : arg1;
+    const hasCustomCommands = ( this.bin.commands.getLength () > 3 );
+    const name = ( arg1 === 'help' ) ? arg2 || ( options['help'] ? arg1 : '' ) : ( hasCustomCommands ? arg1 : '' );
 
     if ( name ) {
 
@@ -66,7 +67,7 @@ class CommandHelp extends Command {
       this.bin.command.arguments.print ( mode );
       this.bin.command.options.print ( mode );
 
-      if ( this.bin.commands.getLength () > 3 ) { // There are some custom commands registered
+      if ( hasCustomCommands ) {
         this.bin.commands.print ( mode );
       }
 
