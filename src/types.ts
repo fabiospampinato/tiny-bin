@@ -34,6 +34,7 @@ type OptionOptions = {
   name: string,
   description: string,
   section?: string,
+  deprecated?: boolean,
   eager?: boolean,
   hidden?: boolean,
   required?: boolean,

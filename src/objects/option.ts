@@ -15,6 +15,7 @@ class Option extends Addon {
   name: string;
   description: string;
   section: string;
+  deprecated: boolean;
   eager: boolean;
   hidden: boolean;
   required: boolean;
@@ -33,6 +34,7 @@ class Option extends Addon {
     this.name = options.name;
     this.description = options.description;
     this.section = options.section || '';
+    this.deprecated = !!options.deprecated;
     this.eager = !!options.eager;
     this.hidden = !!options.hidden;
     this.required = !!options.required;

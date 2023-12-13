@@ -41,6 +41,7 @@ This library has 5 primitives, bins, commands, options, arguments and actions:
   - Each option has a name, a description, and an implicit type (boolean or string).
   - Each option can optional have a section, which will be used to group options in the help page.
   - Each option can optionally be hidden from the help page.
+  - Each option can optionally be marked as deprecated, causing it to be dimmed in the help page.
   - Each option can optionally be marked as eager, so it will consume multiple consecutive values.
   - Each option can optionally be marked as required, so the library will error if it's not provided.
   - Each option can optionally have a default value.
