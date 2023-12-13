@@ -37,15 +37,15 @@ class Options extends Collection<Option> {
         return [
           [
             [
-              ...option.data.longs.sort ().map ( long => withDeprecated ( colors.green ( `--${long}` ) ) ),
-              ...option.data.shorts.sort ().map ( short => withDeprecated ( colors.green ( `-${short}` ) ) ),
+              ...option.data.longs.sort ().map ( long => colors.green ( `--${long}` ) ),
+              ...option.data.shorts.sort ().map ( short => colors.green ( `-${short}` ) ),
             ].join ( ', ' ),
             [
-              ...option.data.args.sort ().map ( arg => withDeprecated ( colors.blue ( `<${arg}>` ) ) )
+              ...option.data.args.sort ().map ( arg => colors.blue ( `<${arg}>` ) )
             ].join ( ' ' ),
           ].join ( ' ' ),
-          withDeprecated ( option.description )
-        ];
+          option.description
+        ].map ( withDeprecated );
 
       });
 

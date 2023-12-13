@@ -19,6 +19,7 @@ type CommandOptions = {
   name: string,
   description: string,
   section?: string,
+  deprecated?: boolean,
   hidden?: boolean
 };
 

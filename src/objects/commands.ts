@@ -3,7 +3,7 @@
 
 import colors from 'tiny-colors';
 import Collection from '~/objects/collection';
-import {groupBy, pushBack} from '~/utils';
+import {groupBy, identity, pushBack} from '~/utils';
 import type Command from '~/objects/command';
 import type {ParsedArgs} from 'tiny-parse-argv';
 
@@ -31,13 +31,19 @@ class Commands extends Collection<Command> {
 
       const title = section ? `${section.toUpperCase ()} COMMANDS` : ( commandsBySection.size > 1 ? 'OTHER COMMANDS' : 'COMMANDS' );
 
-      const table = commands.map ( command => [
-        [
-          colors.magenta ( command.name ),
-          ...command.arguments.getAll ().map ( arg => colors.yellow ( arg.name ) )
-        ].join ( ' ' ),
-        command.description
-      ]);
+      const table = commands.map ( command => {
+
+        const withDeprecated: ( arg: string ) => string = command.deprecated ? colors.dim : identity;
+
+        return [
+          [
+            colors.magenta ( command.name ),
+            ...command.arguments.getAll ().map ( arg => colors.yellow ( arg.name ) )
+          ].join ( ' ' ),
+          command.description
+        ].map ( withDeprecated );
+
+      });
 
       this.logger.group ( title, () => {
         this.logger.table ( table, mode );

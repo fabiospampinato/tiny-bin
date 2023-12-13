@@ -19,6 +19,7 @@ class Command extends Addon {
   name: string;
   description: string;
   section: string;
+  deprecated: boolean;
   hidden: boolean;
   arguments: Arguments = new Arguments ( this.bin );
   options: Options = new Options ( this.bin );
@@ -35,6 +36,7 @@ class Command extends Addon {
     this.name = options.name;
     this.description = options.description;
     this.section = options.section || '';
+    this.deprecated = !!options.deprecated;
     this.hidden = !!options.hidden;
 
     this.parse ( options.name );

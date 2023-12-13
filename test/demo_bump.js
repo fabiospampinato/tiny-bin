@@ -59,4 +59,7 @@ bin ( 'bump', 'Update a project\'s version number' )
   .action ( () => console.log ( 'release' ) )
   .command ( 'wait', 'Wait a bit', { section: 'Extra' } )
   .action ( () => new Promise ( res => setTimeout ( res, 1000 ) ) )
+  .command ( 'deprecated', 'A deprecated command', { deprecated: true } )
+  .argument ( '[arg]', 'Argument' )
+  .action ( () => console.log ( 'deprecated' ) )
   .run ();
