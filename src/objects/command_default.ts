@@ -60,6 +60,7 @@ class CommandDefault extends Command {
         string: <string[]> [],
         eager: <string[]> [],
         required: <string[]> [],
+        variadic: <string[]> [],
         alias: <Record<string, string[]>> {},
         default: <Record<string, any>> {},
         onInvalid: ( options: string[] ): void => {
@@ -87,6 +88,9 @@ class CommandDefault extends Command {
         }
         if ( option.required ) {
           parseArgvOptions.required.push ( ...option.data.alls );
+        }
+        if ( option.variadic ) {
+          parseArgvOptions.variadic.push ( ...option.data.alls );
         }
         if ( 'default' in option ) {
           parseArgvOptions.default[option.data.alls[0]] = option.default;
