@@ -1,6 +1,7 @@
 
 /* IMPORT */
 
+import stringWidth from 'fast-string-width';
 import colors from 'tiny-colors';
 import Addon from '~/objects/addon';
 import {identity, stripAnsi} from '~/utils';
@@ -49,8 +50,8 @@ class Logger extends Addon {
 
   table ( rows: string[][], mode: 'lines' | 'line' = 'line' ): void {
 
-    const raws = rows.map ( row => row.map ( stripAnsi ) );
-    const maxLengths = raws[0].map ( ( _, j ) => Math.max ( ...raws.map ( ( _, i ) => raws[i][j].length ) ) );
+    const rowsLengths = rows.map ( row => row.map ( cell => stringWidth ( cell ) ) );
+    const maxLengths = rowsLengths[0].map ( ( _, j ) => Math.max ( ...rowsLengths.map ( ( _, i ) => rowsLengths[i][j] ) ) );
 
     if ( mode === 'lines' && maxLengths.length === 2 ) { //TODO: Generalize this, even though it's not needed yet
 
@@ -59,7 +60,7 @@ class Logger extends Addon {
 
       rows.forEach ( ( [left, right], i ) => {
 
-        const leftNedded = stripAnsi ( left ).length + PADDING;
+        const leftNedded = stringWidth ( left ) + PADDING;
         const leftAvailable = COLUMN - leftNedded;
         const leftShortEnough = ( leftAvailable >= 2 );
         const rightLines = right.trim ().split ( /\r?\n|\r/g );
@@ -76,7 +77,7 @@ class Logger extends Addon {
 
         const line = row.map ( ( value, j ) => {
 
-          const paddingLength = ( j === row.length - 1 ) ? 0 : Math.max ( 0, 1 + maxLengths[j] - raws[i][j].length );
+          const paddingLength = ( j === row.length - 1 ) ? 0 : Math.max ( 0, 1 + maxLengths[j] - rowsLengths[i][j] );
           const padding = ' '.repeat ( paddingLength );
 
           return `${value}${padding}`;
