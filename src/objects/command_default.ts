@@ -63,6 +63,10 @@ class CommandDefault extends Command {
         variadic: <string[]> [],
         alias: <Record<string, string[]>> {},
         default: <Record<string, any>> {},
+        incompatible: <Partial<Record<string, string[]>>> {},
+        onIncompatible: ( options: [string, string][] ): void => {
+          this.bin.fail ( `Incompatible options: "${options[0][0]}" and "${options[0][1]}" cannot be used together` );
+        },
         onInvalid: ( options: string[] ): void => {
           this.bin.fail ( `Invalid value for "${options[0]}" option` );
         },
@@ -85,6 +89,10 @@ class CommandDefault extends Command {
         }
         if ( option.eager ) {
           parseArgvOptions.eager.push ( ...option.data.alls );
+        }
+        if ( option.incompatible ) {
+          const incompatible = ( parseArgvOptions.incompatible[option.data.alls[0]] ||= [] );
+          incompatible.push ( ...option.incompatible );
         }
         if ( option.required ) {
           parseArgvOptions.required.push ( ...option.data.alls );

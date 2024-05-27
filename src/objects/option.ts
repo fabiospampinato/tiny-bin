@@ -2,6 +2,7 @@
 /* IMPORT */
 
 import Addon from '~/objects/addon';
+import {castArray} from '~/utils';
 import type Bin from '~/objects/bin';
 import type {OptionData, OptionOptions} from '~/types';
 
@@ -18,6 +19,7 @@ class Option extends Addon {
   deprecated: boolean;
   eager: boolean;
   hidden: boolean;
+  incompatible: string[];
   required: boolean;
   variadic: boolean;
   default: unknown;
@@ -37,6 +39,7 @@ class Option extends Addon {
     this.deprecated = !!options.deprecated;
     this.eager = !!options.eager;
     this.hidden = !!options.hidden;
+    this.incompatible = castArray ( options.incompatible || [] );
     this.required = !!options.required;
     this.variadic = options.name.includes ( '...' );
     this.default = options.default;

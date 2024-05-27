@@ -38,6 +38,7 @@ type OptionOptions = {
   deprecated?: boolean,
   eager?: boolean,
   hidden?: boolean,
+  incompatible?: string | string[],
   required?: boolean,
   default?: unknown,
   enum?: string[]
