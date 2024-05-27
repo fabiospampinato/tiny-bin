@@ -25,14 +25,14 @@
     "ansi-purge": "^1.0.0",
     "fast-string-width": "^1.0.5",
     "get-current-package": "^1.0.0",
-    "tiny-colors": "^2.1.2",
+    "tiny-colors": "^2.2.0",
     "tiny-levenshtein": "^1.0.0",
-    "tiny-parse-argv": "^2.3.0",
-    "tiny-updater": "^3.5.1"
+    "tiny-parse-argv": "^2.5.0",
+    "tiny-updater": "^3.5.2"
   },
   "devDependencies": {
     "@types/node": "^20.4.6",
-    "tsex": "^3.0.0",
-    "typescript": "^5.1.6"
+    "tsex": "^3.2.1",
+    "typescript": "^5.4.5"
   }
 }
