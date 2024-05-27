@@ -70,7 +70,7 @@ class CommandDefault extends Command {
           this.bin.fail ( `Missing required option: "${options[0]}"` );
         },
         onUnknown: ( options: string[] ): void => {
-          const closest = getClosest ( parseArgvOptions.known, options[0] );
+          const closest = getClosest ( parseArgvOptions.known, options[0], 3, true );
           this.bin.fail ( `Unknown option: "${options[0]}"${closest ? `. Did you mean "${closest}"?` : ''}` );
         }
       };

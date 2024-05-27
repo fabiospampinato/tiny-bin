@@ -34,7 +34,7 @@ class Collection<T extends { id: string }> extends Addon {
 
   getClosest ( id: string ): string | undefined {
 
-    return getClosest ( this.getIds (), id );
+    return getClosest ( this.getIds (), id, 3, true );
 
   }
 

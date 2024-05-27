@@ -34,11 +34,13 @@ const defer = ( fn: () => void ): void => {
 
 };
 
-const getClosest = ( values: string[], value: string, maxDistance: number = 3 ): string | undefined => {
+const getClosest = ( values: string[], value: string, maxDistance: number = 3, caseInsensitive: boolean = false ): string | undefined => {
 
   if ( !values.length ) return;
 
-  const distances = values.map ( other => levenshtein ( value, other ) );
+  const target = caseInsensitive ? value.toLowerCase () : value;
+  const targets = caseInsensitive ? values.map ( value => value.toLowerCase () ) : values;
+  const distances = targets.map ( other => levenshtein ( target, other ) );
   const minDistance = Math.min ( ...distances );
 
   if ( minDistance > maxDistance ) return;
