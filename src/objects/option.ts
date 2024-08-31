@@ -4,7 +4,7 @@
 import Addon from '~/objects/addon';
 import {castArray} from '~/utils';
 import type Bin from '~/objects/bin';
-import type {OptionData, OptionOptions} from '~/types';
+import type {OptionData, OptionOptions, OptionType} from '~/types';
 
 /* MAIN */
 
@@ -44,7 +44,7 @@ class Option extends Addon {
     this.variadic = options.name.includes ( '...' );
     this.default = options.default;
     this.enum = options.enum;
-    this.data = this.parse ( options.name );
+    this.data = this.parse ( options.name, options.type );
 
     if ( this.eager && !this.data.args.length ) {
       this.bin.fail ( `Eager option must not be boolean: "${this.name}"` );
@@ -58,7 +58,7 @@ class Option extends Addon {
 
   /* API */
 
-  parse ( name: string ): OptionData {
+  parse ( name: string, forceType?: OptionType ): OptionData {
 
     const longsPositive: string[] = [];
     const longs: string[] = [];
@@ -80,7 +80,7 @@ class Option extends Addon {
 
     if ( args.length > 1 ) this.bin.fail ( `Option can define at most one argument: "${name}"` );
 
-    const type = args.length ? 'string' : 'boolean';
+    const type = forceType || ( args.length ? 'string' : 'boolean' );
     const alls = [...longsPositive, ...longs, ...shorts];
     const data: OptionData = { type, alls, longs, shorts, args };
 

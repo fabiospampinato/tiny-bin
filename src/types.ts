@@ -24,7 +24,7 @@ type CommandOptions = {
 };
 
 type OptionData = {
-  type: 'string' | 'boolean',
+  type: OptionType,
   alls: string[],
   longs: string[],
   shorts: string[],
@@ -41,9 +41,14 @@ type OptionOptions = {
   incompatible?: string | string[],
   required?: boolean,
   default?: unknown,
-  enum?: string[]
+  enum?: string[],
+  type?: OptionType
 };
+
+type OptionType = (
+  'boolean' | 'integer' | 'number' | 'string'
+);
 
 /* EXPORT */
 
-export type {ArgumentOptions, BinOptions, CommandHandler, CommandOptions, OptionData, OptionOptions};
+export type {ArgumentOptions, BinOptions, CommandHandler, CommandOptions, OptionData, OptionOptions, OptionType};

@@ -57,6 +57,8 @@ class CommandDefault extends Command {
       const parseArgvOptions = {
         known: <string[]> [],
         boolean: <string[]> [],
+        integer: <string[]> [],
+        number: <string[]> [],
         string: <string[]> [],
         eager: <string[]> [],
         required: <string[]> [],
@@ -83,6 +85,12 @@ class CommandDefault extends Command {
         parseArgvOptions.known.push ( ...option.data.alls );
         if ( option.data.type === 'boolean' ) {
           parseArgvOptions.boolean.push ( ...option.data.alls );
+        }
+        if ( option.data.type === 'integer' ) {
+          parseArgvOptions.integer.push ( ...option.data.alls );
+        }
+        if ( option.data.type === 'number' ) {
+          parseArgvOptions.number.push ( ...option.data.alls );
         }
         if ( option.data.type === 'string' ) {
           parseArgvOptions.string.push ( ...option.data.alls );
