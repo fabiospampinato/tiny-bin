@@ -4,7 +4,7 @@
 import Addon from '~/objects/addon';
 import {castArray} from '~/utils';
 import type Bin from '~/objects/bin';
-import type {OptionData, OptionOptions, OptionType} from '~/types';
+import type {OptionData, OptionOptions, OptionType, OptionValidator} from '~/types';
 
 /* MAIN */
 
@@ -24,6 +24,7 @@ class Option extends Addon {
   variadic: boolean;
   default: unknown;
   enum?: string[];
+  validate?: OptionValidator;
   data: OptionData;
 
   /* CONSTRUCTOR */
@@ -44,6 +45,7 @@ class Option extends Addon {
     this.variadic = options.name.includes ( '...' );
     this.default = options.default;
     this.enum = options.enum;
+    this.validate = options.validate;
     this.data = this.parse ( options.name, options.type );
 
     if ( this.eager && !this.data.args.length ) {

@@ -42,13 +42,18 @@ type OptionOptions = {
   required?: boolean,
   default?: unknown,
   enum?: string[],
-  type?: OptionType
+  type?: OptionType,
+  validate?: OptionValidator
 };
 
 type OptionType = (
   'boolean' | 'integer' | 'number' | 'string'
 );
 
+type OptionValidator = (
+  ( value: string ) => boolean
+);
+
 /* EXPORT */
 
-export type {ArgumentOptions, BinOptions, CommandHandler, CommandOptions, OptionData, OptionOptions, OptionType};
+export type {ArgumentOptions, BinOptions, CommandHandler, CommandOptions, OptionData, OptionOptions, OptionType, OptionValidator};

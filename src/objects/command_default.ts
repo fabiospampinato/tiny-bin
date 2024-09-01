@@ -5,6 +5,7 @@ import parseArgv from 'tiny-parse-argv';
 import Command from '~/objects/command';
 import {camelCase, castArray, getClosest, isArray, sum} from '~/utils';
 import type Bin from '~/objects/bin';
+import type {OptionValidator} from '~/types';
 import type {ParsedArgs} from 'tiny-parse-argv';
 
 /* MAIN */
@@ -63,9 +64,10 @@ class CommandDefault extends Command {
         eager: <string[]> [],
         required: <string[]> [],
         variadic: <string[]> [],
-        alias: <Record<string, string[]>> {},
-        default: <Record<string, any>> {},
+        alias: <Partial<Record<string, string[]>>> {},
+        default: <Partial<Record<string, any>>> {},
         incompatible: <Partial<Record<string, string[]>>> {},
+        validators: <Partial<Record<string, OptionValidator>>> {},
         onIncompatible: ( options: [string, string][] ): void => {
           this.bin.fail ( `Incompatible options: "${options[0][0]}" and "${options[0][1]}" cannot be used together` );
         },
@@ -107,6 +109,9 @@ class CommandDefault extends Command {
         }
         if ( option.variadic ) {
           parseArgvOptions.variadic.push ( ...option.data.alls );
+        }
+        if ( option.validate ) {
+          parseArgvOptions.validators[option.data.alls[0]] = option.validate;
         }
         if ( 'default' in option ) {
           parseArgvOptions.default[option.data.alls[0]] = option.default;
