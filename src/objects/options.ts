@@ -22,7 +22,8 @@ class Options extends Collection<Option> {
 
     if ( !optionsVisible.length ) return;
 
-    const optionsBySection = pushBack ( groupBy ( optionsVisible, option => option.section.toLowerCase () ), '' );
+    const withoutOther = ( section: string ) => section.toLowerCase () !== 'other' ? section : '';
+    const optionsBySection = pushBack ( groupBy ( optionsVisible, option => withoutOther ( option.section.toLowerCase () ) ), '' );
 
     optionsBySection.forEach ( ( options, section ) => {
 

@@ -23,7 +23,8 @@ class Commands extends Collection<Command> {
 
     if ( !commandsVisible.length ) return;
 
-    const commandsBySection = pushBack ( groupBy ( commandsVisible, command => command.section.toLowerCase () ), '' );
+    const withoutOther = ( section: string ) => section.toLowerCase () !== 'other' ? section : '';
+    const commandsBySection = pushBack ( groupBy ( commandsVisible, command => withoutOther ( command.section.toLowerCase () ) ), '' );
 
     commandsBySection.forEach ( ( commands, section ) => {
 
