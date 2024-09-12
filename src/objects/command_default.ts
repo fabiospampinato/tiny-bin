@@ -63,6 +63,7 @@ class CommandDefault extends Command {
         string: <string[]> [],
         eager: <string[]> [],
         required: <string[]> [],
+        unary: <string[]> [],
         variadic: <string[]> [],
         alias: <Partial<Record<string, string[]>>> {},
         default: <Partial<Record<string, any>>> {},
@@ -106,6 +107,9 @@ class CommandDefault extends Command {
         }
         if ( option.required ) {
           parseArgvOptions.required.push ( ...option.data.alls );
+        }
+        if ( !option.variadic ) {
+          parseArgvOptions.unary.push ( ...option.data.alls );
         }
         if ( option.variadic ) {
           parseArgvOptions.variadic.push ( ...option.data.alls );
