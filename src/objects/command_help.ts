@@ -45,14 +45,14 @@ class CommandHelp extends Command {
       const command = this.bin.commands.getOrFail ( name );
       const mode = this.getPrintMode ([ command.arguments, command.options, this.bin.command.options ]);
 
-      this.logger.indent ();
-      this.logger.print ();
+      this.stdout.indent ();
+      this.stdout.print ();
       this.bin.metadata.print ();
       command.usage.print ( command );
       command.arguments.print ( mode );
       this.bin.command.options.print ( mode );
       command.options.print ( mode );
-      this.logger.dedent ();
+      this.stdout.dedent ();
 
     } else {
 
@@ -60,8 +60,8 @@ class CommandHelp extends Command {
 
       //TODO: Printing multiple options groups with the same name feel a bit wrong, though the separation seems good
 
-      this.logger.indent ();
-      this.logger.print ();
+      this.stdout.indent ();
+      this.stdout.print ();
       this.bin.metadata.print ();
       this.bin.command.usage.print ( this.bin.command );
       this.bin.command.arguments.print ( mode );
@@ -71,7 +71,7 @@ class CommandHelp extends Command {
         this.bin.commands.print ( mode );
       }
 
-      this.logger.dedent ();
+      this.stdout.dedent ();
 
     }
 

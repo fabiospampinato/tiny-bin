@@ -11,14 +11,16 @@ class Addon {
   /* VARIABLES */
 
   protected bin: Bin;
-  protected logger: Logger;
+  protected stdout: Logger;
+  protected stderr: Logger;
 
   /* CONSTRUCTOR */
 
   constructor ( bin: Bin ) {
 
     this.bin = bin;
-    this.logger = bin.logger;
+    this.stdout = bin.stdout;
+    this.stderr = bin.stderr;
 
   }
 

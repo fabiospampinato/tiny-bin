@@ -18,14 +18,14 @@ class Usage extends Addon {
 
   print ( command: Command ): void {
 
-    this.logger.group ( 'USAGE', () => {
+    this.stdout.group ( 'USAGE', () => {
 
       if ( this.usages.size ) {
 
         //TODO: Maybe automatically colorize these
 
         this.usages.forEach ( usage => {
-          this.logger.print ( usage );
+          this.stdout.print ( usage );
         });
 
       } else {
@@ -40,7 +40,7 @@ class Usage extends Addon {
         const args = command.arguments.getAll ().map ( arg => colors.yellow ( arg.name ) ).join ( ' ' );
         const line = [name, commands, args].filter ( identity ).join ( ' ' );
 
-        this.logger.print ( line );
+        this.stdout.print ( line );
 
       }
 

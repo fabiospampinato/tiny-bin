@@ -46,8 +46,8 @@ class Commands extends Collection<Command> {
 
       });
 
-      this.logger.group ( title, () => {
-        this.logger.table ( table, mode );
+      this.stdout.group ( title, () => {
+        this.stdout.table ( table, mode );
       });
 
     });

@@ -5,6 +5,8 @@ import stringWidth from 'fast-string-width';
 import colors from 'tiny-colors';
 import Addon from '~/objects/addon';
 import {identity, stripAnsi} from '~/utils';
+import type Bin from '~/objects/bin';
+import type {LoggerHandler} from '~/types';
 
 /* MAIN */
 
@@ -12,8 +14,19 @@ class Logger extends Addon {
 
   /* VARIABLES */
 
+  protected handler: LoggerHandler;
   protected indentationLevel: number = 0;
   protected indentation: string = '  ';
+
+  /* CONSTRUCTOR */
+
+  constructor ( bin: Bin, handler: LoggerHandler ) {
+
+    super ( bin );
+
+    this.handler = handler;
+
+  }
 
   /* API */
 
@@ -44,7 +57,7 @@ class Logger extends Addon {
 
     const colorize = this.bin.metadata.colors ? identity : stripAnsi;
 
-    console.log ( colorize ( `${this.indentation.repeat ( this.indentationLevel )}${message}` ) );
+    this.handler ( colorize ( `${this.indentation.repeat ( this.indentationLevel )}${message}` ) );
 
   }
 

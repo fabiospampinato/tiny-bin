@@ -22,8 +22,8 @@ class Arguments extends Collection<Argument> {
       arg.description
     ]);
 
-    this.logger.group ( 'ARGUMENTS', () => {
-      this.logger.table ( table, mode );
+    this.stdout.group ( 'ARGUMENTS', () => {
+      this.stdout.table ( table, mode );
     });
 
   }

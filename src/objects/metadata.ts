@@ -22,8 +22,8 @@ class Metadata extends Addon {
 
   print (): void {
 
-    this.logger.print ( `${colors.cyan ( this.name )} ${colors.dim ( this.version )}` );
-    this.logger.print ();
+    this.stdout.print ( `${colors.cyan ( this.name )} ${colors.dim ( this.version )}` );
+    this.stdout.print ();
 
   }
 

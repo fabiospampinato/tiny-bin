@@ -23,6 +23,10 @@ type CommandOptions = {
   hidden?: boolean
 };
 
+type LoggerHandler = {
+  ( ...args: unknown[] ): void
+};
+
 type OptionData = {
   type: OptionType,
   alls: string[],
@@ -56,4 +60,4 @@ type OptionValidator = (
 
 /* EXPORT */
 
-export type {ArgumentOptions, BinOptions, CommandHandler, CommandOptions, OptionData, OptionOptions, OptionType, OptionValidator};
+export type {ArgumentOptions, BinOptions, CommandHandler, CommandOptions, LoggerHandler, OptionData, OptionOptions, OptionType, OptionValidator};

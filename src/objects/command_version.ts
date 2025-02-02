@@ -25,7 +25,7 @@ class CommandVersion extends Command {
 
   async run ( options: ParsedArgs, argv: string[] ): Promise<void> {
 
-    this.logger.print ( this.bin.metadata.version );
+    this.stdout.print ( this.bin.metadata.version );
 
   }
 

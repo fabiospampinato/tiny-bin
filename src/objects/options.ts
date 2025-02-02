@@ -50,8 +50,8 @@ class Options extends Collection<Option> {
 
       });
 
-      this.logger.group ( title, () => {
-        this.logger.table ( table, mode );
+      this.stdout.group ( title, () => {
+        this.stdout.table ( table, mode );
       });
 
     });

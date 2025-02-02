@@ -23,7 +23,8 @@ class Bin {
 
   /* VARIABLES */
 
-  logger: Logger = new Logger ( this );
+  stdout: Logger = new Logger ( this, console.log );
+  stderr: Logger = new Logger ( this, console.error );
   metadata: Metadata = new Metadata ( this );
   commands: Commands = new Commands ( this );
   command: Command;
@@ -54,11 +55,11 @@ class Bin {
 
   fail ( message: string ): never {
 
-    this.logger.print ();
-    this.logger.indent ();
-    this.logger.print ( colors.red ( message ) );
-    this.logger.dedent ();
-    this.logger.print ();
+    this.stderr.print ();
+    this.stderr.indent ();
+    this.stderr.print ( colors.red ( message ) );
+    this.stderr.dedent ();
+    this.stderr.print ();
 
     process.exit ( 1 );
 
