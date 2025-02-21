@@ -3,7 +3,7 @@
   "repository": "github:fabiospampinato/tiny-bin",
   "description": "A library for building tiny and beautiful command line apps.",
   "license": "MIT",
-  "version": "1.10.3",
+  "version": "1.11.0",
   "type": "module",
   "main": "dist/index.js",
   "exports": "./dist/index.js",
