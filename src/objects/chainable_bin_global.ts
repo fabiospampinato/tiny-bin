@@ -59,7 +59,7 @@ class ChainableBin extends Addon {
 
     const option = new Option ( this.bin, { name, description, ...options } );
 
-    this.bin.command.options.register ( option );
+    this.bin.command.options.register ( option, !!options.override );
 
     return this;
 

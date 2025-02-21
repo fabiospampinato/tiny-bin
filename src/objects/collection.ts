@@ -52,13 +52,25 @@ class Collection<T extends { ids: string[] }> extends Addon {
 
   }
 
-  register ( value: T ): void {
+  register ( value: T, overridable: boolean = false ): void {
 
     const existing = this.getByIds ( value.ids );
 
     if ( existing ) {
 
-      this.bin.fail ( `Duplicate "${existing.id}"` );
+      if ( overridable ) {
+
+        const index = this.list.indexOf ( existing.value );
+
+        existing.value.ids.forEach ( id => this.map.delete ( id ) );
+        value.ids.forEach ( id => this.map.set ( id, value ) );
+        this.list.splice ( index, 1, value );
+
+      } else {
+
+        this.bin.fail ( `Duplicate "${existing.id}"` );
+
+      }
 
     } else {
 

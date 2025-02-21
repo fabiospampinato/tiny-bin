@@ -43,6 +43,7 @@ type OptionOptions = {
   eager?: boolean,
   hidden?: boolean,
   incompatible?: string | string[],
+  override?: boolean,
   required?: boolean,
   default?: unknown,
   enum?: string[],

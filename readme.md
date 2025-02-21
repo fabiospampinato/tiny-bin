@@ -45,6 +45,7 @@ This library has 5 primitives, bins, commands, options, arguments and actions:
   - Each option can optionally be marked as eager, so it will consume multiple consecutive values.
   - Each option can optionally be marked as incompatible with some others.
   - Each option can optionally be marked as required, so the library will error if it's not provided.
+  - Each option can optionally be marked as explicitly overriding a previously defined option.
   - Each option can optionally have a default value.
   - Each option can optionally have an explicit list of allowed values.
   - Each option can have multiple longhands (e.g. `--foo`) and multiple shorthands (e.g. `-f`).
