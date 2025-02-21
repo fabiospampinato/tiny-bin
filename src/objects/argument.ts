@@ -11,7 +11,7 @@ class Argument extends Addon {
 
   /* VARIABLES */
 
-  id: string;
+  ids: string[];
   name: string;
   description: string;
   required: boolean;
@@ -23,25 +23,28 @@ class Argument extends Addon {
 
     super ( bin );
 
-    this.id = options.name;
+    this.ids = [this.parse ( options.name )];
     this.name = options.name;
     this.description = options.description;
     this.required = ( options.name[0] === '<' );
     this.variadic = options.name.includes ( '...' );
 
-    this.parse ( options.name );
 
   }
 
-  /* API */
+  /* PRIVATE API */
 
-  parse ( name: string ): void {
+  private parse ( name: string ): string {
 
-    const re = /^\[[^\].]+(?:\.\.\.)?\]$|^<[^>.]+(?:\.\.\.)?>$/;
+    const re = /^\[([^\].]+)(?:\.\.\.)?\]$|^<([^>.]+)(?:\.\.\.)?>$/;
 
-    const isValid = re.test ( name );
+    const match = re.exec ( name );
 
-    if ( !isValid ) this.bin.fail ( `Invalid argument: "${name}"` );
+    if ( !match ) this.bin.fail ( `Invalid argument: "${name}"` );
+
+    const id = match[1] || match[2];
+
+    return id;
 
   }
 

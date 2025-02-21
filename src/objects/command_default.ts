@@ -28,7 +28,7 @@ class CommandDefault extends Command {
 
   async run ( options: ParsedArgs, argv: string[] ): Promise<void> {
 
-    const name = this.bin.commands.has ( options._[0] ) ? options._[0] : this.name;
+    const name = this.bin.commands.getById ( options._[0] ) ? options._[0] : this.name;
 
     if ( options['help'] || name === 'help' ) {
 
@@ -50,7 +50,7 @@ class CommandDefault extends Command {
 
       }
 
-      const command = this.bin.commands.getOrFail ( name );
+      const command = this.bin.commands.getByIdOrFail ( name );
       const options = [...this.bin.command.options.getAll (), ...command.options.getAll ()];
       const minArgs = command.arguments.getAll ().filter ( arg => arg.required ).length;
       const maxArgs = sum ( command.arguments.getAll ().map ( arg => arg.variadic ? Infinity : 1 ) );

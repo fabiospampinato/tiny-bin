@@ -12,7 +12,8 @@ class Option extends Addon {
 
   /* VARIABLES */
 
-  id: string;
+  data: OptionData;
+  ids: string[];
   name: string;
   description: string;
   section: string;
@@ -25,7 +26,6 @@ class Option extends Addon {
   default: unknown;
   enum?: string[];
   validate?: OptionValidator;
-  data: OptionData;
 
   /* CONSTRUCTOR */
 
@@ -33,7 +33,8 @@ class Option extends Addon {
 
     super ( bin );
 
-    this.id = options.name;
+    this.data = this.parse ( options.name, options.type );
+    this.ids = this.data.alls;
     this.name = options.name;
     this.description = options.description;
     this.section = options.section || '';
@@ -46,7 +47,6 @@ class Option extends Addon {
     this.default = options.default;
     this.enum = options.enum;
     this.validate = options.validate;
-    this.data = this.parse ( options.name, options.type );
 
     if ( this.eager && !this.data.args.length ) {
       this.bin.fail ( `Eager option must not be boolean: "${this.name}"` );
@@ -58,9 +58,9 @@ class Option extends Addon {
 
   }
 
-  /* API */
+  /* PRIVATE API */
 
-  parse ( name: string, forceType?: OptionType ): OptionData {
+  private parse ( name: string, forceType?: OptionType ): OptionData {
 
     const longsPositive: string[] = [];
     const longs: string[] = [];

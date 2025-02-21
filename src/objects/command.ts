@@ -15,7 +15,7 @@ class Command extends Addon {
 
   /* VARIABLES */
 
-  id: string;
+  ids: string[];
   name: string;
   description: string;
   section: string;
@@ -32,20 +32,18 @@ class Command extends Addon {
 
     super ( bin );
 
-    this.id = options.name;
+    this.ids = [this.parse ( options.name )];
     this.name = options.name;
     this.description = options.description;
     this.section = options.section || '';
     this.deprecated = !!options.deprecated;
     this.hidden = !!options.hidden;
 
-    this.parse ( options.name );
-
   }
 
-  /* API */
+  /* PRIVATE API */
 
-  parse ( name: string ): void {
+  private parse ( name: string ): string {
 
     const re = /^_?[a-z][a-z-]*$/;
 
@@ -53,7 +51,11 @@ class Command extends Addon {
 
     if ( !isValid ) this.bin.fail ( `Invalid command: "${name}"` );
 
+    return name;
+
   }
+
+  /* API */
 
   async run ( options: ParsedArgs, argv: string[] ): Promise<void> {
 

@@ -6,71 +6,64 @@ import {getClosest} from '~/utils';
 
 /* MAIN */
 
-class Collection<T extends { id: string }> extends Addon {
+class Collection<T extends { ids: string[] }> extends Addon {
 
   /* VARIABLES */
 
-  protected collection: Map<string, T> = new Map ();
+  private list: T[] = [];
+  private map: Map<string, T> = new Map ();
 
   /* API */
 
-  get ( id: string ): T | undefined {
+  getAll (): readonly T[] {
 
-    return this.collection.get ( id );
-
-  }
-
-  getAll (): T[] {
-
-    return Array.from ( this.collection.values () );
+    return this.list;
 
   }
 
-  getIds (): string[] {
+  getById ( id: string ): T | undefined {
 
-    return Array.from ( this.collection.keys () );
-
-  }
-
-  getClosest ( id: string ): string | undefined {
-
-    return getClosest ( this.getIds (), id, 3, true );
+    return this.getByIds ([ id ])?.value;
 
   }
 
-  getLength (): number {
+  getByIdOrFail ( id: string ): T {
 
-    return this.collection.size;
-
-  }
-
-  getOrFail ( id: string ): T {
-
-    const value = this.get ( id );
+    const value = this.getById ( id );
 
     if ( value ) return value;
 
-    const closest = this.getClosest ( id );
+    const ids = Array.from ( this.map.keys () );
+    const closest = getClosest ( ids, id, 3, true );
 
     this.bin.fail ( `Not found "${id}"${closest ? `. Did you mean "${closest}"?` : ''}` );
 
   }
 
-  has ( id: string ): boolean {
+  getByIds ( ids: string[] ): { id: string, value: T } | undefined {
 
-    return this.collection.has ( id );
+    for ( const id of ids ) {
+
+      const value = this.map.get ( id );
+
+      if ( value ) return { id, value };
+
+    }
 
   }
 
   register ( value: T ): void {
 
-    if ( this.has ( value.id ) ) {
+    const existing = this.getByIds ( value.ids );
 
-      this.bin.fail ( `Duplicate "${value.id}"` );
+    if ( existing ) {
+
+      this.bin.fail ( `Duplicate "${existing.id}"` );
 
     } else {
 
-      this.collection.set ( value.id, value );
+      value.ids.forEach ( id => this.map.set ( id, value ) );
+      this.list.push ( value );
 
     }
 

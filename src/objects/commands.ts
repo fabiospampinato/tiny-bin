@@ -56,7 +56,7 @@ class Commands extends Collection<Command> {
 
   run ( name: string, options: ParsedArgs, argv: string[] ): Promise<void> {
 
-    const command = this.getOrFail ( name );
+    const command = this.getByIdOrFail ( name );
 
     return command.run ( options, argv );
 

@@ -26,7 +26,7 @@ class CommandHelp extends Command {
 
   /* PRIVATE API */
 
-  private getPrintMode ( collections: Collection<{ id: string, description: string }>[] ): 'line' | 'lines' {
+  private getPrintMode ( collections: Collection<{ ids: string[], description: string }>[] ): 'line' | 'lines' {
 
     return collections.some ( collection => collection.getAll ().some ( item => item.description.includes ( '\n' ) ) ) ? 'lines' : 'line';
 
@@ -37,12 +37,12 @@ class CommandHelp extends Command {
   async run ( options: ParsedArgs, argv: string[] ): Promise<void> {
 
     const [arg1, arg2] = options._;
-    const hasCustomCommands = ( this.bin.commands.getLength () > 3 );
+    const hasCustomCommands = ( this.bin.commands.getAll ().length > 3 );
     const name = ( arg1 === 'help' ) ? arg2 || ( options['help'] ? arg1 : '' ) : ( hasCustomCommands ? arg1 : '' );
 
     if ( name ) {
 
-      const command = this.bin.commands.getOrFail ( name );
+      const command = this.bin.commands.getByIdOrFail ( name );
       const mode = this.getPrintMode ([ command.arguments, command.options, this.bin.command.options ]);
 
       this.stdout.indent ();
