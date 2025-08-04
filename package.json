@@ -24,10 +24,10 @@
   ],
   "dependencies": {
     "ansi-purge": "^1.0.1",
-    "fast-string-width": "^1.1.0",
+    "fast-string-width": "^2.0.0",
     "get-current-package": "^1.0.1",
     "tiny-colors": "^2.2.2",
-    "tiny-levenshtein": "^1.0.1",
+    "tiny-levenshtein": "^1.1.0",
     "tiny-parse-argv": "^2.8.2",
     "tiny-updater": "^3.5.3"
   },
