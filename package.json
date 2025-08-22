@@ -24,7 +24,7 @@
   ],
   "dependencies": {
     "ansi-purge": "^1.0.1",
-    "fast-string-width": "^2.0.0",
+    "fast-string-width": "^3.0.1",
     "get-current-package": "^1.0.1",
     "tiny-colors": "^2.2.2",
     "tiny-levenshtein": "^1.1.0",
