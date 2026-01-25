@@ -3,14 +3,14 @@
 
 import Addon from './addon';
 import Argument from './argument';
-import ChainableCommand from './chainable_command';
+import ChainableCommandLocal from './chainable_command_local';
 import Command from './command';
 import Option from './option';
 import type {ArgumentOptions, CommandHandler, CommandOptions, ConfigOptions, OptionOptions} from '../types';
 
 /* MAIN */
 
-class ChainableBinGlobal extends Addon {
+class ChainableCommandGlobal extends Addon {
 
   /* API */
 
@@ -58,13 +58,13 @@ class ChainableBinGlobal extends Addon {
 
   }
 
-  command ( name: string, description: string, options: Omit<CommandOptions, 'name' | 'description'> = {} ): ChainableCommand {
+  command ( name: string, description: string, options: Omit<CommandOptions, 'name' | 'description'> = {} ): ChainableCommandLocal {
 
     const command = new Command ( this.bin, { name, description, ...options } );
 
     this.bin.commands.register ( command );
 
-    return new ChainableCommand ( this.bin, command );
+    return new ChainableCommandLocal ( this.bin, command );
 
   }
 
@@ -78,4 +78,4 @@ class ChainableBinGlobal extends Addon {
 
 /* EXPORT */
 
-export default ChainableBinGlobal;
+export default ChainableCommandGlobal;

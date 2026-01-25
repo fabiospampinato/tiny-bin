@@ -3,7 +3,7 @@
 
 import Addon from './addon';
 import Argument from './argument';
-import ChainableBinLocal from './chainable_bin_local';
+import ChainableAction from './chainable_action';
 import Option from './option';
 import type {ArgumentOptions, CommandHandler, OptionOptions} from '../types';
 import type Bin from './bin';
@@ -57,11 +57,11 @@ class ChainableCommand extends Addon {
 
   }
 
-  action ( handler: CommandHandler ): ChainableBinLocal {
+  action ( handler: CommandHandler ): ChainableAction {
 
     this.command.handler = handler;
 
-    return new ChainableBinLocal ( this.bin );
+    return new ChainableAction ( this.bin );
 
   }
 

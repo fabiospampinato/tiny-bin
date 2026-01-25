@@ -2,16 +2,16 @@
 /* IMPORT */
 
 import Bin from './objects/bin';
-import ChainableBinGlobal from './objects/chainable_bin_global';
+import ChainableCommandGlobal from './objects/chainable_command_global';
 
 /* MAIN */
 
-const bin = ( name: string, description: string ): ChainableBinGlobal => {
+const bin = ( name: string, description: string ): ChainableCommandGlobal => {
 
   const bin = new Bin ({ name, description });
-  const chainable = new ChainableBinGlobal ( bin );
+  const command = new ChainableCommandGlobal ( bin );
 
-  return chainable;
+  return command;
 
 };
 
