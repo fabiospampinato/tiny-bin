@@ -1,6 +1,7 @@
 
 /* IMPORT */
 
+import {ENABLED} from 'tiny-colors';
 import colors from 'tiny-colors';
 import Addon from './addon';
 import type {ConfigOptions} from '../types';
@@ -15,7 +16,7 @@ class Config extends Addon {
   description: string = '';
   package: string = '';
   version: string = '';
-  colors: boolean = true;
+  colors: boolean = ENABLED;
   autoExit: boolean = true;
 
   /* API */
