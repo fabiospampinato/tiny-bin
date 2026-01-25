@@ -76,9 +76,12 @@ import bin from 'tiny-bin';
 
 bin ( 'gitman', 'A simple yet powerful opinionated tool for managing repositories' )
   /* BIN OPTIONS */
-  .colors ( false ) // Turn off colored output
-  .package ( '@fabiospampinato/gitman', '1.2.3' ) // Set the package name and version number manually
-  .autoExit ( false ) // Turn off the automatic process.exit call after action execution
+  .config ({
+    package: '@fabiospampinato/gitman', // Manually set the package name
+    version: '1.2.3', // Manually set the version number
+    colors: false, // Turn off colored output
+    autoExit: false // Turn off the automatic process.exit call after action execution
+  })
   /* GLOBAL COMMAND OPTIONS */
   .option ( '--silent, -s', 'Silence all output' )
   .option ( '--verbose, -V', 'Verbose output' )

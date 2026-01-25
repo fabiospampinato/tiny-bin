@@ -47,7 +47,7 @@ class CommandHelp extends Command {
 
       this.stdout.indent ();
       this.stdout.print ();
-      this.bin.metadata.print ();
+      this.bin.config.print ();
       command.usage.print ( command );
       command.arguments.print ( mode );
       this.bin.command.options.print ( mode );
@@ -62,7 +62,7 @@ class CommandHelp extends Command {
 
       this.stdout.indent ();
       this.stdout.print ();
-      this.bin.metadata.print ();
+      this.bin.config.print ();
       this.bin.command.usage.print ( this.bin.command );
       this.bin.command.arguments.print ( mode );
       this.bin.command.options.print ( mode );

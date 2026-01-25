@@ -7,9 +7,9 @@ import bin from '../dist/index.js';
 /* MAIN */
 
 bin ( 'bump', 'Update a project\'s version number' )
-  // .colors ( false )
-  // .package ( '@fabiospampinato/bump', '1.2.3' )
-  // .autoExit ( false )
+  // .config ({ colors: false })
+  // .config ({ package: '@fabiospampinato/bump', version: '1.2.3' })
+  // .config ({ autoExit: false })
   // .usage ( 'Custom usage string' )
   // .usage ( 'Other usage string' )
   .option ( '--silent <hi...>', 'Minimize the amount of logs', { section: 'General' } )

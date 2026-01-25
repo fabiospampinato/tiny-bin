@@ -6,7 +6,7 @@ import Argument from './argument';
 import ChainableCommand from './chainable_command';
 import Command from './command';
 import Option from './option';
-import type {ArgumentOptions, CommandHandler, CommandOptions, OptionOptions} from '../types';
+import type {ArgumentOptions, CommandHandler, CommandOptions, ConfigOptions, OptionOptions} from '../types';
 
 /* MAIN */
 
@@ -14,26 +14,9 @@ class ChainableBinGlobal extends Addon {
 
   /* API */
 
-  colors ( colors: boolean ): this {
+  config ( options: ConfigOptions ): this {
 
-    this.bin.metadata.colors = colors;
-
-    return this;
-
-  }
-
-  package ( name: string, version: string ): this {
-
-    this.bin.metadata.package = name;
-    this.bin.metadata.version = version;
-
-    return this;
-
-  }
-
-  autoExit ( exiter: boolean ): this {
-
-    this.bin.metadata.exiter = exiter;
+    this.bin.config.update ( options );
 
     return this;
 

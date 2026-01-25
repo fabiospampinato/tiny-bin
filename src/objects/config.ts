@@ -3,19 +3,20 @@
 
 import colors from 'tiny-colors';
 import Addon from './addon';
+import type {ConfigOptions} from '../types';
 
 /* MAIN */
 
-class Metadata extends Addon {
+class Config extends Addon {
 
   /* VARIABLES */
 
   name: string = 'bin';
   description: string = '';
   package: string = '';
-  version: string = '0.0.0';
+  version: string = '';
   colors: boolean = true;
-  exiter: boolean = true;
+  autoExit: boolean = true;
 
   /* API */
 
@@ -26,8 +27,14 @@ class Metadata extends Addon {
 
   }
 
+  update ( options: Partial<ConfigOptions> ): void {
+
+    Object.assign ( this, options );
+
+  }
+
 }
 
 /* EXPORT */
 
-export default Metadata;
+export default Config;

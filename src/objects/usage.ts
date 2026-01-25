@@ -33,7 +33,7 @@ class Usage extends Addon {
         //TODO: List required options too
 
         const isCommandDefault = ( command === this.bin.command );
-        const binName = this.bin.metadata.name;
+        const binName = this.bin.config.name;
         const commandName = isCommandDefault ? '' : command.name;
         const name = [binName, commandName].filter ( identity ).join ( ' ' );
         const commands = isCommandDefault && !command.handler ? colors.magenta ( '[command]' ) : '';

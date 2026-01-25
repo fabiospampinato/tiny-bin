@@ -29,6 +29,15 @@ type CommandOptions = {
   hidden?: boolean
 };
 
+type ConfigOptions = {
+  name: string,
+  description: string,
+  package: string,
+  version: string,
+  colors: boolean,
+  autoExit: boolean
+};
+
 type LoggerHandler = {
   ( ...args: unknown[] ): void
 };
@@ -67,4 +76,4 @@ type OptionValidator = (
 
 /* EXPORT */
 
-export type {ArgumentOptions, ArgumentsParsed, BinOptions, CommandHandler, CommandOptions, LoggerHandler, OptionData, OptionOptions, OptionType, OptionValidator};
+export type {ArgumentOptions, ArgumentsParsed, BinOptions, CommandHandler, CommandOptions, ConfigOptions, LoggerHandler, OptionData, OptionOptions, OptionType, OptionValidator};

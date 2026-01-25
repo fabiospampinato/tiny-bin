@@ -8,8 +8,8 @@ import CommandDefault from './command_default';
 import CommandHelp from './command_help';
 import CommandVersion from './command_version';
 import Commands from './commands';
+import Config from './config';
 import Logger from './logger';
-import Metadata from './metadata';
 import Option from './option';
 import {parseArgv} from './utils';
 import type {BinOptions} from '../types';
@@ -23,7 +23,7 @@ class Bin {
 
   stdout: Logger = new Logger ( this, console.log );
   stderr: Logger = new Logger ( this, console.error );
-  metadata: Metadata = new Metadata ( this );
+  config: Config = new Config ( this );
   commands: Commands = new Commands ( this );
   command: Command;
 
@@ -31,8 +31,8 @@ class Bin {
 
   constructor ( options: BinOptions ) {
 
-    this.metadata.name = options.name;
-    this.metadata.description = options.description;
+    this.config.name = options.name;
+    this.config.description = options.description;
 
     const fallback = new CommandDefault ( this );
     const help = new CommandHelp ( this )
@@ -65,9 +65,9 @@ class Bin {
 
   async run ( argv: string[] = process.argv.slice ( 2 ) ): Promise<void> {
 
-    // process.title = this.metadata.name; //FIXME: It seems useless inside VSCODE, and not working as expected inside Terminal.app, so...
+    // process.title = this.config.name; //FIXME: It seems useless inside VSCODE, and not working as expected inside Terminal.app, so...
 
-    if ( !this.metadata.package ) {
+    if ( !this.config.package || !this.config.version ) {
 
       const pkg = getCurrentPackage ();
 
@@ -75,8 +75,8 @@ class Bin {
 
         const {name, version} = pkg;
 
-        this.metadata.package = name;
-        this.metadata.version = version;
+        this.config.package ||= name;
+        this.config.version ||= version;
 
       }
 
@@ -88,7 +88,7 @@ class Bin {
 
       await this.commands.run ( this.command.name, options, argv );
 
-      if ( this.metadata.exiter ) {
+      if ( this.config.autoExit ) {
 
         process.exit ();
 
@@ -98,7 +98,7 @@ class Bin {
 
       console.error ( error );
 
-      if ( this.metadata.exiter ) {
+      if ( this.config.autoExit ) {
 
         process.exit ( 1 );
 

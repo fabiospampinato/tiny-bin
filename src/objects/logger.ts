@@ -55,7 +55,7 @@ class Logger extends Addon {
 
   print ( message: string = '' ): void {
 
-    const colorize = this.bin.metadata.colors ? identity : stripAnsi;
+    const colorize = this.bin.config.colors ? identity : stripAnsi;
 
     this.handler ( colorize ( `${this.indentation.repeat ( this.indentationLevel )}${message}` ) );
 
