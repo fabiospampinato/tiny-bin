@@ -28,6 +28,7 @@
     "ansi-purge": "^1.1.0",
     "fast-string-width": "^3.0.2",
     "get-current-package": "^1.0.1",
+    "kasi": "^2.0.1",
     "tiny-colors": "^2.2.2",
     "tiny-levenshtein": "^1.1.0",
     "tiny-parse-argv": "^2.8.2"

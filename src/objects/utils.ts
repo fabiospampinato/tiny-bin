@@ -2,25 +2,10 @@
 /* IMPORT */
 
 import stripAnsi from 'ansi-purge';
+import {toCamelCase} from 'kasi';
 import levenshtein from 'tiny-levenshtein';
 
 /* MAIN */
-
-const camelCase = (() => {
-
-  const dividerRe = /[_.\s-]+/g;
-  const prefixRe = /^[_.\s-]+/g;
-  const upperDigitRe = /\d+[\p{Alpha}\p{N}_]/gu;
-  const upperDividerRe = /[_.\s-]+[\p{Alpha}\p{N}_]/gu;
-  const toUpperCase = ( str: string ): string => str.toUpperCase ();
-
-  return ( str: string ): string => {
-
-    return str.trim ().toLowerCase ().replace ( prefixRe, '' ).replace ( upperDigitRe, toUpperCase ).replace ( upperDividerRe, toUpperCase ).replace ( dividerRe, '' );
-
-  };
-
-})();
 
 const castArray = <T> ( value: T | T[] ): T[] => {
 
@@ -105,4 +90,4 @@ const sum = ( numbers: number[] ): number => {
 
 /* EXPORT */
 
-export {camelCase, castArray, getClosest, groupBy, identity, isArray, stripAnsi, pushBack, sum};
+export {castArray, getClosest, groupBy, identity, isArray, isUndefined, pushBack, stripAnsi, sum, toCamelCase};
