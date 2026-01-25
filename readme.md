@@ -15,6 +15,7 @@ At a high level this package provides:
 - Beautiful colored and detailed help pages. Colors can be turned off also.
 - Automatic package name and version detection, so you don't even need to provide those.
 - Automatic typo detection, it will suggest the closest command/option if you mistype one.
+- Automatic options type inference from the provided options.
 - Automatic `help` and `--help` handling, both for the bin and for each command.
 - Automatic `--version` and `-v` handling.
 - Automatic `--no-color` and `--no-colors` handling.
@@ -75,7 +76,7 @@ npm install tiny-bin
 import bin from 'tiny-bin';
 
 bin ( 'gitman', 'A simple yet powerful opinionated tool for managing repositories' )
-  /* BIN OPTIONS */
+  /* BIN CONFIGURATION */
   .config ({
     package: '@fabiospampinato/gitman', // Manually set the package name
     version: '1.2.3', // Manually set the version number

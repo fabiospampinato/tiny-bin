@@ -23,7 +23,7 @@ class Command extends Addon {
   arguments: Arguments = new Arguments ( this.bin );
   options: Options = new Options ( this.bin );
   usage: Usage = new Usage ( this.bin );
-  handler?: CommandHandler;
+  handler?: CommandHandler<any>;
 
   /* CONSTRUCTOR */
 

@@ -3,15 +3,17 @@
 
 import Addon from './addon';
 import Argument from './argument';
+import ChainableAction from './chainable_action';
 import ChainableCommandLocal from './chainable_command_local';
 import Command from './command';
 import Option from './option';
 import {isObject} from './utils';
 import type {ArgumentOptions, CommandHandler, CommandOptions, ConfigOptions, OptionOptions} from '../types';
+import type {OptionInfer} from '../types.infer';
 
 /* MAIN */
 
-class ChainableCommandGlobal extends Addon {
+class ChainableCommandGlobal<GlobalOptions> extends Addon {
 
   /* API */
 
@@ -31,9 +33,9 @@ class ChainableCommandGlobal extends Addon {
 
   }
 
-  option ( options: OptionOptions ): this;
-  option ( name: string, description: string, options?: Omit<OptionOptions, 'name' | 'description'> ): this;
-  option ( name: OptionOptions | string, description?: string, options?: Omit<OptionOptions, 'name' | 'description'> ): this {
+  option<N extends string, O extends OptionOptions> ( options: O & { name: N } ): ChainableCommandGlobal<GlobalOptions & OptionInfer<N, O>>;
+  option<N extends string, O extends Omit<OptionOptions, 'name' | 'description'> = {}> ( name: N, description: string, options?: O ): ChainableCommandGlobal<GlobalOptions & OptionInfer<N, O>>;
+  option ( name: OptionOptions | string, description?: string, options?: Omit<OptionOptions, 'name' | 'description'> ): ChainableCommandGlobal<GlobalOptions> {
 
     const optionOptions = isObject ( name ) ? name : { name, description, ...options };
     const option = new Option ( this.bin, optionOptions );
@@ -57,17 +59,17 @@ class ChainableCommandGlobal extends Addon {
 
   }
 
-  action ( handler: CommandHandler ): this {
+  action ( handler: CommandHandler<GlobalOptions> ): ChainableAction<GlobalOptions> {
 
     this.bin.command.handler = handler;
 
-    return this;
+    return new ChainableAction<GlobalOptions> ( this.bin );
 
   }
 
-  command ( options: CommandOptions ): ChainableCommandLocal;
-  command ( name: string, description: string, options?: Omit<CommandOptions, 'name' | 'description'> ): ChainableCommandLocal;
-  command ( name: CommandOptions | string, description?: string, options?: Omit<CommandOptions, 'name' | 'description'> ): ChainableCommandLocal {
+  command ( options: CommandOptions ): ChainableCommandLocal<GlobalOptions, {}>;
+  command ( name: string, description: string, options?: Omit<CommandOptions, 'name' | 'description'> ): ChainableCommandLocal<GlobalOptions, {}>;
+  command ( name: CommandOptions | string, description?: string, options?: Omit<CommandOptions, 'name' | 'description'> ): ChainableCommandLocal<GlobalOptions, {}> {
 
     const commandOptions = isObject ( name ) ? name : { name, description, ...options };
     const command = new Command ( this.bin, commandOptions );

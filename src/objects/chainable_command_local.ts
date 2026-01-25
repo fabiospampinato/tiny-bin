@@ -7,12 +7,13 @@ import ChainableAction from './chainable_action';
 import Option from './option';
 import {isObject} from './utils';
 import type {ArgumentOptions, CommandHandler, OptionOptions} from '../types';
+import type {OptionInfer} from '../types.infer';
 import type Bin from './bin';
 import type Command from './command';
 
 /* MAIN */
 
-class ChainableCommand extends Addon {
+class ChainableCommandLocal<GlobalOptions, LocalOptions> extends Addon {
 
   /* VARIABLES */
 
@@ -38,9 +39,9 @@ class ChainableCommand extends Addon {
 
   }
 
-  option ( options: OptionOptions ): this;
-  option ( name: string, description: string, options?: Omit<OptionOptions, 'name' | 'description'> ): this;
-  option ( name: OptionOptions | string, description?: string, options?: Omit<OptionOptions, 'name' | 'description'> ): this {
+  option<N extends string, O extends OptionOptions> ( options: O & { name: N } ): ChainableCommandLocal<GlobalOptions, LocalOptions & OptionInfer<N, O>>;
+  option<N extends string, O extends Omit<OptionOptions, 'name' | 'description'> = {}> ( name: N, description: string, options?: O ): ChainableCommandLocal<GlobalOptions, LocalOptions & OptionInfer<N, O>>;
+  option ( name: OptionOptions | string, description?: string, options?: Omit<OptionOptions, 'name' | 'description'> ): ChainableCommandLocal<GlobalOptions, LocalOptions> {
 
     const optionOptions = isObject ( name ) ? name : { name, description, ...options };
     const option = new Option ( this.bin, optionOptions );
@@ -64,11 +65,11 @@ class ChainableCommand extends Addon {
 
   }
 
-  action ( handler: CommandHandler ): ChainableAction {
+  action ( handler: CommandHandler<GlobalOptions & LocalOptions> ): ChainableAction<GlobalOptions> {
 
     this.command.handler = handler;
 
-    return new ChainableAction ( this.bin );
+    return new ChainableAction<GlobalOptions> ( this.bin );
 
   }
 
@@ -76,4 +77,4 @@ class ChainableCommand extends Addon {
 
 /* EXPORT */
 
-export default ChainableCommand;
+export default ChainableCommandLocal;

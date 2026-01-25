@@ -17,8 +17,8 @@ type BinOptions = {
   description?: string
 };
 
-type CommandHandler = {
-  ( options: Record<string, any>, args: string[], passthroughArgs: string[] ): void
+type CommandHandler<Options> = {
+  ( options: Prettify<Options>, args: string[], passthroughArgs: string[] ): void
 };
 
 type CommandOptions = {
@@ -74,6 +74,11 @@ type OptionValidator = (
   ( value: string ) => boolean
 );
 
+// This collapses multiple intersections into a single object type
+type Prettify<T> = {} & {
+  [K in keyof T]: T[K]
+};
+
 /* EXPORT */
 
-export type {ArgumentOptions, ArgumentsParsed, BinOptions, CommandHandler, CommandOptions, ConfigOptions, LoggerHandler, OptionData, OptionOptions, OptionType, OptionValidator};
+export type {ArgumentOptions, ArgumentsParsed, BinOptions, CommandHandler, CommandOptions, ConfigOptions, LoggerHandler, OptionData, OptionOptions, OptionType, OptionValidator, Prettify};

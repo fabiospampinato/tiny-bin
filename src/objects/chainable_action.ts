@@ -9,17 +9,17 @@ import type ChainableCommandLocal from './chainable_command_local';
 
 /* MAIN */
 
-class ChainableAction extends Addon {
+class ChainableAction<GlobalOptions> extends Addon {
 
   /* API */
 
-  command ( options: CommandOptions ): ChainableCommandLocal;
-  command ( name: string, description: string, options?: Omit<CommandOptions, 'name' | 'description'> ): ChainableCommandLocal;
-  command ( name: CommandOptions | string, description?: string, options?: Omit<CommandOptions, 'name' | 'description'> ): ChainableCommandLocal {
+  command ( options: CommandOptions ): ChainableCommandLocal<GlobalOptions, {}>;
+  command ( name: string, description: string, options?: Omit<CommandOptions, 'name' | 'description'> ): ChainableCommandLocal<GlobalOptions, {}>;
+  command ( name: CommandOptions | string, description?: string, options?: Omit<CommandOptions, 'name' | 'description'> ): ChainableCommandLocal<GlobalOptions, {}> {
 
     const commandOptions = isObject ( name ) ? name : { name, description, ...options };
 
-    return new ChainableCommandGlobal ( this.bin ).command ( commandOptions );
+    return new ChainableCommandGlobal<GlobalOptions> ( this.bin ).command ( commandOptions );
 
   }
 
