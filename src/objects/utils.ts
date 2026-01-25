@@ -4,6 +4,7 @@
 import stripAnsi from 'ansi-purge';
 import {toCamelCase} from 'kasi';
 import levenshtein from 'tiny-levenshtein';
+import parseArgv from 'tiny-parse-argv';
 
 /* MAIN */
 
@@ -90,4 +91,4 @@ const sum = ( numbers: number[] ): number => {
 
 /* EXPORT */
 
-export {castArray, getClosest, groupBy, identity, isArray, isUndefined, pushBack, stripAnsi, sum, toCamelCase};
+export {castArray, getClosest, groupBy, identity, isArray, isUndefined, parseArgv, pushBack, stripAnsi, sum, toCamelCase};

@@ -1,12 +1,10 @@
 
 /* IMPORT */
 
-import parseArgv from 'tiny-parse-argv';
 import Command from './command';
-import {camelCase, castArray, getClosest, isArray, sum} from './utils';
+import {castArray, getClosest, isArray, parseArgv, sum, toCamelCase} from './utils';
 import type Bin from './bin';
-import type {OptionValidator} from '../types';
-import type {ParsedArgs} from 'tiny-parse-argv';
+import type {ArgumentsParsed, OptionValidator} from '../types';
 
 /* MAIN */
 
@@ -26,7 +24,7 @@ class CommandDefault extends Command {
 
   /* API */
 
-  async run ( options: ParsedArgs, argv: string[] ): Promise<void> {
+  async run ( options: ArgumentsParsed, argv: string[] ): Promise<void> {
 
     const name = this.bin.commands.getById ( options._[0] ) ? options._[0] : this.name;
 
@@ -150,7 +148,7 @@ class CommandDefault extends Command {
       });
 
       Object.keys ( parsed ).forEach ( key => {
-        const camelKey = camelCase ( key );
+        const camelKey = toCamelCase ( key );
         if ( camelKey === key ) return;
         parsed[camelKey] = parsed[key];
       });

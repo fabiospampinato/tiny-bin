@@ -5,9 +5,9 @@ import Addon from './addon';
 import Argument from './argument';
 import ChainableBinLocal from './chainable_bin_local';
 import Option from './option';
+import type {ArgumentOptions, CommandHandler, OptionOptions} from '../types';
 import type Bin from './bin';
 import type Command from './command';
-import type {ArgumentOptions, CommandHandler, OptionOptions} from '../types';
 
 /* MAIN */
 

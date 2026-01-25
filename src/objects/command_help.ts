@@ -4,8 +4,8 @@
 import Collection from './collection';
 import Command from './command';
 import Argument from './argument';
+import type {ArgumentsParsed} from '../types';
 import type Bin from './bin';
-import type {ParsedArgs} from 'tiny-parse-argv';
 
 /* MAIN */
 
@@ -34,7 +34,7 @@ class CommandHelp extends Command {
 
   /* API */
 
-  async run ( options: ParsedArgs, argv: string[] ): Promise<void> {
+  async run ( options: ArgumentsParsed, argv: string[] ): Promise<void> {
 
     const [arg1, arg2] = options._;
     const hasCustomCommands = ( this.bin.commands.getAll ().length > 3 );

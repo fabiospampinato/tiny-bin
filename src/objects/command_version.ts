@@ -2,8 +2,8 @@
 /* IMPORT */
 
 import Command from './command';
+import type {ArgumentsParsed} from '../types';
 import type Bin from './bin';
-import type {ParsedArgs} from 'tiny-parse-argv';
 
 /* MAIN */
 
@@ -23,7 +23,7 @@ class CommandVersion extends Command {
 
   /* API */
 
-  async run ( options: ParsedArgs, argv: string[] ): Promise<void> {
+  async run ( options: ArgumentsParsed, argv: string[] ): Promise<void> {
 
     this.stdout.print ( this.bin.metadata.version );
 

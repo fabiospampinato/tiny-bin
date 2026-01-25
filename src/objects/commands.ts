@@ -4,8 +4,8 @@
 import colors from 'tiny-colors';
 import Collection from './collection';
 import {groupBy, identity, pushBack} from './utils';
+import type {ArgumentsParsed} from '../types';
 import type Command from './command';
-import type {ParsedArgs} from 'tiny-parse-argv';
 
 /* MAIN */
 
@@ -54,7 +54,7 @@ class Commands extends Collection<Command> {
 
   }
 
-  run ( name: string, options: ParsedArgs, argv: string[] ): Promise<void> {
+  run ( name: string, options: ArgumentsParsed, argv: string[] ): Promise<void> {
 
     const command = this.getByIdOrFail ( name );
 

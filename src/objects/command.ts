@@ -5,9 +5,8 @@ import Addon from './addon';
 import Arguments from './arguments';
 import Options from './options';
 import Usage from './usage';
+import type {ArgumentsParsed, CommandHandler, CommandOptions} from '../types';
 import type Bin from './bin';
-import type {CommandHandler, CommandOptions} from '../types';
-import type {ParsedArgs} from 'tiny-parse-argv';
 
 /* MAIN */
 
@@ -46,7 +45,6 @@ class Command extends Addon {
   private parse ( name: string ): string {
 
     const re = /^_?[a-z][a-z-]*$/;
-
     const isValid = re.test ( name );
 
     if ( !isValid ) this.bin.fail ( `Invalid command: "${name}"` );
@@ -57,7 +55,7 @@ class Command extends Addon {
 
   /* API */
 
-  async run ( options: ParsedArgs, argv: string[] ): Promise<void> {
+  async run ( options: ArgumentsParsed, argv: string[] ): Promise<void> {
 
     if ( !this.handler ) {
 

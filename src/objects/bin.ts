@@ -4,16 +4,16 @@
 import getCurrentPackage from 'get-current-package';
 import process from 'node:process';
 import colors from 'tiny-colors';
-import parseArgv from 'tiny-parse-argv';
-import Logger from './logger';
-import Metadata from './metadata';
-import Commands from './commands';
 import CommandDefault from './command_default';
 import CommandHelp from './command_help';
 import CommandVersion from './command_version';
+import Commands from './commands';
+import Logger from './logger';
+import Metadata from './metadata';
 import Option from './option';
-import type Command from './command';
+import {parseArgv} from './utils';
 import type {BinOptions} from '../types';
+import type Command from './command';
 
 /* MAIN */
 

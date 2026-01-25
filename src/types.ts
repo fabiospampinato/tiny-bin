@@ -1,10 +1,16 @@
 
+/* IMPORT */
+
+import type {ParsedArgs} from 'tiny-parse-argv';
+
 /* MAIN */
 
 type ArgumentOptions = {
   name: string,
   description: string
 };
+
+type ArgumentsParsed = ParsedArgs;
 
 type BinOptions = {
   name: string,
@@ -61,4 +67,4 @@ type OptionValidator = (
 
 /* EXPORT */
 
-export type {ArgumentOptions, BinOptions, CommandHandler, CommandOptions, LoggerHandler, OptionData, OptionOptions, OptionType, OptionValidator};
+export type {ArgumentOptions, ArgumentsParsed, BinOptions, CommandHandler, CommandOptions, LoggerHandler, OptionData, OptionOptions, OptionType, OptionValidator};

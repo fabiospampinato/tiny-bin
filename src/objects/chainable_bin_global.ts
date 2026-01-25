@@ -10,7 +10,7 @@ import type {ArgumentOptions, CommandHandler, CommandOptions, OptionOptions} fro
 
 /* MAIN */
 
-class ChainableBin extends Addon {
+class ChainableBinGlobal extends Addon {
 
   /* API */
 
@@ -95,4 +95,4 @@ class ChainableBin extends Addon {
 
 /* EXPORT */
 
-export default ChainableBin;
+export default ChainableBinGlobal;

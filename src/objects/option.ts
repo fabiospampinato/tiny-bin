@@ -3,8 +3,8 @@
 
 import Addon from './addon';
 import {castArray} from './utils';
-import type Bin from './bin';
 import type {OptionData, OptionOptions, OptionType, OptionValidator} from '../types';
+import type Bin from './bin';
 
 /* MAIN */
 

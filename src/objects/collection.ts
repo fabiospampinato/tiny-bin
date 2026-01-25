@@ -46,7 +46,9 @@ class Collection<T extends { ids: string[] }> extends Addon {
 
       const value = this.map.get ( id );
 
-      if ( value ) return { id, value };
+      if ( !value ) continue;
+
+      return { id, value };
 
     }
 

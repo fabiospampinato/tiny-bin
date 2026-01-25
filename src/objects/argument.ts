@@ -2,8 +2,8 @@
 /* IMPORT */
 
 import Addon from './addon';
-import type Bin from './bin';
 import type {ArgumentOptions} from '../types';
+import type Bin from './bin';
 
 /* MAIN */
 
@@ -29,7 +29,6 @@ class Argument extends Addon {
     this.required = ( options.name[0] === '<' );
     this.variadic = options.name.includes ( '...' );
 
-
   }
 
   /* PRIVATE API */
@@ -37,7 +36,6 @@ class Argument extends Addon {
   private parse ( name: string ): string {
 
     const re = /^\[([^\].]+)(?:\.\.\.)?\]$|^<([^>.]+)(?:\.\.\.)?>$/;
-
     const match = re.exec ( name );
 
     if ( !match ) this.bin.fail ( `Invalid argument: "${name}"` );
