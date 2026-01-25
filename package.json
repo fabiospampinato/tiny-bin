@@ -23,16 +23,16 @@
     "cli"
   ],
   "dependencies": {
-    "ansi-purge": "^1.0.1",
-    "fast-string-width": "^3.0.1",
+    "ansi-purge": "^1.1.0",
+    "fast-string-width": "^3.0.2",
     "get-current-package": "^1.0.1",
     "tiny-colors": "^2.2.2",
     "tiny-levenshtein": "^1.1.0",
     "tiny-parse-argv": "^2.8.2"
   },
   "devDependencies": {
-    "@types/node": "^18.19.74",
+    "@types/node": "^18.19.130",
     "tsex": "^4.0.2",
-    "typescript": "^5.7.3"
+    "typescript": "^5.9.3"
   }
 }
