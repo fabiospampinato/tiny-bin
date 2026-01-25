@@ -20,7 +20,7 @@ At a high level this package provides:
 - Automatic `--version` and `-v` handling.
 - Automatic `--no-color` and `--no-colors` handling.
 
-This library has 5 primitives, bins, commands, options, arguments and actions:
+This library has 5 primitives -- bins, commands, options, arguments and actions:
 
 - Bin:
   - A bin is the entry point of your command line app, you can define multiple bins.
@@ -67,7 +67,7 @@ This library has 5 primitives, bins, commands, options, arguments and actions:
 ## Install
 
 ```sh
-npm install --save tiny-bin
+npm install tiny-bin
 ```
 
 ## Usage
