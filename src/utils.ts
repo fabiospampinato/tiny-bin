@@ -28,12 +28,6 @@ const castArray = <T> ( value: T | T[] ): T[] => {
 
 };
 
-const defer = ( fn: () => void ): void => {
-
-  setTimeout ( fn, 0 );
-
-};
-
 const getClosest = ( values: string[], value: string, maxDistance: number = 3, caseInsensitive: boolean = false ): string | undefined => {
 
   if ( !values.length ) return;
@@ -111,4 +105,4 @@ const sum = ( numbers: number[] ): number => {
 
 /* EXPORT */
 
-export {camelCase, castArray, defer, getClosest, groupBy, identity, isArray, stripAnsi, pushBack, sum};
+export {camelCase, castArray, getClosest, groupBy, identity, isArray, stripAnsi, pushBack, sum};

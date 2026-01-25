@@ -10,7 +10,6 @@ bin ( 'gitman', 'A simple yet powerful opinionated tool for managing repositorie
   // .colors ( false ) // Turn off colored output
   // .package ( '@fabiospampinato/gitman', '1.2.3' ) // Set the package name and version number manually
   .autoExit ( false ) // Turn off the automatic process.exit call after action execution
-  .autoUpdateNotifier ( false ) // Turn off the automatic update notifier
   /* GLOBAL COMMAND OPTIONS */
   .option ( '--silent, -s', 'Silence all output' )
   .option ( '--verbose, -V', 'Verbose output' )

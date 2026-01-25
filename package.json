@@ -28,8 +28,7 @@
     "get-current-package": "^1.0.1",
     "tiny-colors": "^2.2.2",
     "tiny-levenshtein": "^1.1.0",
-    "tiny-parse-argv": "^2.8.2",
-    "tiny-updater": "^3.5.3"
+    "tiny-parse-argv": "^2.8.2"
   },
   "devDependencies": {
     "@types/node": "^18.19.74",

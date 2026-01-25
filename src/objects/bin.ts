@@ -5,7 +5,6 @@ import getCurrentPackage from 'get-current-package';
 import process from 'node:process';
 import colors from 'tiny-colors';
 import parseArgv from 'tiny-parse-argv';
-import updater from 'tiny-updater';
 import Logger from '~/objects/logger';
 import Metadata from '~/objects/metadata';
 import Commands from '~/objects/commands';
@@ -13,7 +12,6 @@ import CommandDefault from '~/objects/command_default';
 import CommandHelp from '~/objects/command_help';
 import CommandVersion from '~/objects/command_version';
 import Option from '~/objects/option';
-import {defer} from '~/utils';
 import type Command from '~/objects/command';
 import type {BinOptions} from '~/types';
 
@@ -81,20 +79,6 @@ class Bin {
         this.metadata.version = version;
 
       }
-
-    }
-
-    if ( this.metadata.package && this.metadata.updater ) {
-
-      defer ( () => {
-
-        updater ({
-          name: this.metadata.package,
-          version: this.metadata.version,
-          ttl: 43_200_000
-         });
-
-      });
 
     }
 

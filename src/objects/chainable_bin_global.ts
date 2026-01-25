@@ -39,14 +39,6 @@ class ChainableBin extends Addon {
 
   }
 
-  autoUpdateNotifier ( updater: boolean ): this {
-
-    this.bin.metadata.updater = updater;
-
-    return this;
-
-  }
-
   usage ( usage: string ): this {
 
     this.bin.command.usage.register ( usage );

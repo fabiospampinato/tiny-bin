@@ -13,7 +13,6 @@ At a high level this package provides:
 
 - A tiny library, that has no third-party dependencies, that can be bundled, for great startup performance.
 - Beautiful colored and detailed help pages. Colors can be turned off also.
-- Automatic update notifications, that will notify the user of an update right before exiting.
 - Automatic package name and version detection, so you don't even need to provide those.
 - Automatic typo detection, it will suggest the closest command/option if you mistype one.
 - Automatic `help` and `--help` handling, both for the bin and for each command.
@@ -80,7 +79,6 @@ bin ( 'gitman', 'A simple yet powerful opinionated tool for managing repositorie
   .colors ( false ) // Turn off colored output
   .package ( '@fabiospampinato/gitman', '1.2.3' ) // Set the package name and version number manually
   .autoExit ( false ) // Turn off the automatic process.exit call after action execution
-  .autoUpdateNotifier ( false ) // Turn off the automatic update notifier
   /* GLOBAL COMMAND OPTIONS */
   .option ( '--silent, -s', 'Silence all output' )
   .option ( '--verbose, -V', 'Verbose output' )

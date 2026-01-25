@@ -16,7 +16,6 @@ class Metadata extends Addon {
   version: string = '0.0.0';
   colors: boolean = true;
   exiter: boolean = true;
-  updater: boolean = true;
 
   /* API */
 
