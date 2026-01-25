@@ -1,6 +1,6 @@
 
 <p align="center">
-  <img src="./resources/demo.png" alt="Demo app" width="681px">
+  <img src="./resources/demo_gitman.png" alt="Demo app" width="681px">
 </p>
 
 # Tiny Bin

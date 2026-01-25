@@ -1,11 +1,10 @@
+#!/usr/bin/env node
 
 /* IMPORT */
 
 import bin from '../dist/index.js';
 
 /* MAIN */
-
-//TODO: Write automated tests also
 
 bin ( 'bump', 'Update a project\'s version number' )
   // .colors ( false )

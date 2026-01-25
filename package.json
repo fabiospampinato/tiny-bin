@@ -12,6 +12,8 @@
     "clean": "tsex clean",
     "compile": "tsex compile",
     "compile:watch": "tsex compile --watch",
+    "test": "tsex test",
+    "test:watch": "tsex test --watch",
     "prepublishOnly": "tsex prepare"
   },
   "keywords": [
@@ -32,6 +34,7 @@
   },
   "devDependencies": {
     "@types/node": "^18.19.130",
+    "fava": "^0.3.5",
     "tsex": "^4.0.2",
     "typescript": "^5.9.3"
   }
