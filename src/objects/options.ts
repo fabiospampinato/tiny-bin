@@ -2,9 +2,9 @@
 /* IMPORT */
 
 import colors from 'tiny-colors';
-import Collection from '~/objects/collection';
-import {groupBy, identity, pushBack} from '~/utils';
-import type Option from '~/objects/option';
+import Collection from './collection';
+import {groupBy, identity, pushBack} from './utils';
+import type Option from './option';
 
 /* MAIN */
 

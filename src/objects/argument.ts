@@ -1,9 +1,9 @@
 
 /* IMPORT */
 
-import Addon from '~/objects/addon';
-import type Bin from '~/objects/bin';
-import type {ArgumentOptions} from '~/types';
+import Addon from './addon';
+import type Bin from './bin';
+import type {ArgumentOptions} from '../types';
 
 /* MAIN */
 

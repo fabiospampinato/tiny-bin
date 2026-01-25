@@ -1,12 +1,12 @@
 
 /* IMPORT */
 
-import Addon from '~/objects/addon';
-import Arguments from '~/objects/arguments';
-import Options from '~/objects/options';
-import Usage from '~/objects/usage';
-import type Bin from '~/objects/bin';
-import type {CommandHandler, CommandOptions} from '~/types';
+import Addon from './addon';
+import Arguments from './arguments';
+import Options from './options';
+import Usage from './usage';
+import type Bin from './bin';
+import type {CommandHandler, CommandOptions} from '../types';
 import type {ParsedArgs} from 'tiny-parse-argv';
 
 /* MAIN */

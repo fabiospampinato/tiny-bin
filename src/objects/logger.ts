@@ -3,10 +3,10 @@
 
 import stringWidth from 'fast-string-width';
 import colors from 'tiny-colors';
-import Addon from '~/objects/addon';
-import {identity, stripAnsi} from '~/utils';
-import type Bin from '~/objects/bin';
-import type {LoggerHandler} from '~/types';
+import Addon from './addon';
+import {identity, stripAnsi} from './utils';
+import type Bin from './bin';
+import type {LoggerHandler} from '../types';
 
 /* MAIN */
 

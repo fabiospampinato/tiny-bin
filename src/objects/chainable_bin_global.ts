@@ -1,12 +1,12 @@
 
 /* IMPORT */
 
-import Addon from '~/objects/addon';
-import Argument from '~/objects/argument';
-import ChainableCommand from '~/objects/chainable_command';
-import Command from '~/objects/command';
-import Option from '~/objects/option';
-import type {ArgumentOptions, CommandHandler, CommandOptions, OptionOptions} from '~/types';
+import Addon from './addon';
+import Argument from './argument';
+import ChainableCommand from './chainable_command';
+import Command from './command';
+import Option from './option';
+import type {ArgumentOptions, CommandHandler, CommandOptions, OptionOptions} from '../types';
 
 /* MAIN */
 

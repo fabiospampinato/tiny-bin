@@ -1,13 +1,13 @@
 
 /* IMPORT */
 
-import Addon from '~/objects/addon';
-import Argument from '~/objects/argument';
-import ChainableBinLocal from '~/objects/chainable_bin_local';
-import Option from '~/objects/option';
-import type Bin from '~/objects/bin';
-import type Command from '~/objects/command';
-import type {ArgumentOptions, CommandHandler, OptionOptions} from '~/types';
+import Addon from './addon';
+import Argument from './argument';
+import ChainableBinLocal from './chainable_bin_local';
+import Option from './option';
+import type Bin from './bin';
+import type Command from './command';
+import type {ArgumentOptions, CommandHandler, OptionOptions} from '../types';
 
 /* MAIN */
 

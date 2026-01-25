@@ -2,9 +2,9 @@
 /* IMPORT */
 
 import colors from 'tiny-colors';
-import Collection from '~/objects/collection';
-import {groupBy, identity, pushBack} from '~/utils';
-import type Command from '~/objects/command';
+import Collection from './collection';
+import {groupBy, identity, pushBack} from './utils';
+import type Command from './command';
 import type {ParsedArgs} from 'tiny-parse-argv';
 
 /* MAIN */

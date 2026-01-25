@@ -2,9 +2,9 @@
 /* IMPORT */
 
 import colors from 'tiny-colors';
-import Addon from '~/objects/addon';
-import {identity} from '~/utils';
-import type Command from '~/objects/command';
+import Addon from './addon';
+import {identity} from './utils';
+import type Command from './command';
 
 /* MAIN */
 

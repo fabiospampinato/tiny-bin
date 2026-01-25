@@ -2,10 +2,10 @@
 /* IMPORT */
 
 import parseArgv from 'tiny-parse-argv';
-import Command from '~/objects/command';
-import {camelCase, castArray, getClosest, isArray, sum} from '~/utils';
-import type Bin from '~/objects/bin';
-import type {OptionValidator} from '~/types';
+import Command from './command';
+import {camelCase, castArray, getClosest, isArray, sum} from './utils';
+import type Bin from './bin';
+import type {OptionValidator} from '../types';
 import type {ParsedArgs} from 'tiny-parse-argv';
 
 /* MAIN */

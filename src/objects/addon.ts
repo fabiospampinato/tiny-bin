@@ -1,8 +1,8 @@
 
 /* IMPORT */
 
-import type Bin from '~/objects/bin';
-import type Logger from '~/objects/logger';
+import type Bin from './bin';
+import type Logger from './logger';
 
 /* MAIN */
 

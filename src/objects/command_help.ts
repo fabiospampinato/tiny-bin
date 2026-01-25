@@ -1,10 +1,10 @@
 
 /* IMPORT */
 
-import Collection from '~/objects/collection';
-import Command from '~/objects/command';
-import Argument from '~/objects/argument';
-import type Bin from '~/objects/bin';
+import Collection from './collection';
+import Command from './command';
+import Argument from './argument';
+import type Bin from './bin';
 import type {ParsedArgs} from 'tiny-parse-argv';
 
 /* MAIN */

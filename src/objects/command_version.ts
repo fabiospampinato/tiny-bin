@@ -1,8 +1,8 @@
 
 /* IMPORT */
 
-import Command from '~/objects/command';
-import type Bin from '~/objects/bin';
+import Command from './command';
+import type Bin from './bin';
 import type {ParsedArgs} from 'tiny-parse-argv';
 
 /* MAIN */

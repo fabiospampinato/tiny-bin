@@ -2,8 +2,8 @@
 /* IMPORT */
 
 import colors from 'tiny-colors';
-import Collection from '~/objects/collection';
-import type Argument from '~/objects/argument';
+import Collection from './collection';
+import type Argument from './argument';
 
 /* MAIN */
 

@@ -1,8 +1,8 @@
 
 /* IMPORT */
 
-import Addon from '~/objects/addon';
-import {getClosest} from '~/utils';
+import Addon from './addon';
+import {getClosest} from './utils';
 
 /* MAIN */
 

@@ -1,10 +1,10 @@
 
 /* IMPORT */
 
-import Addon from '~/objects/addon';
-import ChainableBin from '~/objects/chainable_bin_global';
-import type ChainableCommand from '~/objects/chainable_command';
-import type {CommandOptions} from '~/types';
+import Addon from './addon';
+import ChainableBin from './chainable_bin_global';
+import type ChainableCommand from './chainable_command';
+import type {CommandOptions} from '../types';
 
 /* MAIN */
 

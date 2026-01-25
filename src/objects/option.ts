@@ -1,10 +1,10 @@
 
 /* IMPORT */
 
-import Addon from '~/objects/addon';
-import {castArray} from '~/utils';
-import type Bin from '~/objects/bin';
-import type {OptionData, OptionOptions, OptionType, OptionValidator} from '~/types';
+import Addon from './addon';
+import {castArray} from './utils';
+import type Bin from './bin';
+import type {OptionData, OptionOptions, OptionType, OptionValidator} from '../types';
 
 /* MAIN */
 

@@ -1,8 +1,8 @@
 
 /* IMPORT */
 
-import Bin from '~/objects/bin';
-import ChainableBinGlobal from '~/objects/chainable_bin_global';
+import Bin from './objects/bin';
+import ChainableBinGlobal from './objects/chainable_bin_global';
 
 /* MAIN */
 

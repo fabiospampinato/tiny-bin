@@ -2,7 +2,7 @@
 /* IMPORT */
 
 import colors from 'tiny-colors';
-import Addon from '~/objects/addon';
+import Addon from './addon';
 
 /* MAIN */
 
