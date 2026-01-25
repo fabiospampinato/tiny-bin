@@ -15,7 +15,7 @@ class ChainableCommandGlobal extends Addon {
 
   /* API */
 
-  config ( options: ConfigOptions ): this {
+  config ( options: Partial<ConfigOptions> ): this {
 
     this.bin.config.update ( options );
 
