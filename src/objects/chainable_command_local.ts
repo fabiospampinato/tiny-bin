@@ -5,6 +5,7 @@ import Addon from './addon';
 import Argument from './argument';
 import ChainableAction from './chainable_action';
 import Option from './option';
+import {isObject} from './utils';
 import type {ArgumentOptions, CommandHandler, OptionOptions} from '../types';
 import type Bin from './bin';
 import type Command from './command';
@@ -37,19 +38,25 @@ class ChainableCommand extends Addon {
 
   }
 
-  option ( name: string, description: string, options: Omit<OptionOptions, 'name' | 'description'> = {} ): this {
+  option ( options: OptionOptions ): this;
+  option ( name: string, description: string, options?: Omit<OptionOptions, 'name' | 'description'> ): this;
+  option ( name: OptionOptions | string, description?: string, options?: Omit<OptionOptions, 'name' | 'description'> ): this {
 
-    const option = new Option ( this.bin, { name, description, ...options } );
+    const optionOptions = isObject ( name ) ? name : { name, description, ...options };
+    const option = new Option ( this.bin, optionOptions );
 
-    this.command.options.register ( option, !!options.override );
+    this.command.options.register ( option, !!optionOptions.override );
 
     return this;
 
   }
 
-  argument ( name: string, description: string, options: Omit<ArgumentOptions, 'name' | 'description'> = {} ): this {
+  argument ( options: ArgumentOptions ): this;
+  argument ( name: string, description: string, options?: Omit<ArgumentOptions, 'name' | 'description'> ): this;
+  argument ( name: ArgumentOptions | string, description?: string, options?: Omit<ArgumentOptions, 'name' | 'description'> ): this {
 
-    const argument = new Argument ( this.bin, { name, description, ...options } );
+    const argumentOptions = isObject ( name ) ? name : { name, description, ...options };
+    const argument = new Argument ( this.bin, argumentOptions );
 
     this.command.arguments.register ( argument );
 

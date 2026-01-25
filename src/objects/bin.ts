@@ -31,8 +31,8 @@ class Bin {
 
   constructor ( options: BinOptions ) {
 
-    this.config.name = options.name;
-    this.config.description = options.description;
+    this.config.name = options.name ?? this.config.name;
+    this.config.description = options.description ?? this.config.description;
 
     const fallback = new CommandDefault ( this );
     const help = new CommandHelp ( this )

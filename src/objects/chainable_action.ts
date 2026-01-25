@@ -3,6 +3,7 @@
 
 import Addon from './addon';
 import ChainableCommandGlobal from './chainable_command_global';
+import {isObject} from './utils';
 import type {CommandOptions} from '../types';
 import type ChainableCommandLocal from './chainable_command_local';
 
@@ -12,9 +13,13 @@ class ChainableAction extends Addon {
 
   /* API */
 
-  command ( name: string, description: string, options: Omit<CommandOptions, 'name' | 'description'> = {} ): ChainableCommandLocal {
+  command ( options: CommandOptions ): ChainableCommandLocal;
+  command ( name: string, description: string, options?: Omit<CommandOptions, 'name' | 'description'> ): ChainableCommandLocal;
+  command ( name: CommandOptions | string, description?: string, options?: Omit<CommandOptions, 'name' | 'description'> ): ChainableCommandLocal {
 
-    return new ChainableCommandGlobal ( this.bin ).command ( name, description, options );
+    const commandOptions = isObject ( name ) ? name : { name, description, ...options };
+
+    return new ChainableCommandGlobal ( this.bin ).command ( commandOptions );
 
   }
 

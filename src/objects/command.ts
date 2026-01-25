@@ -33,7 +33,7 @@ class Command extends Addon {
 
     this.ids = [this.parse ( options.name )];
     this.name = options.name;
-    this.description = options.description;
+    this.description = options.description || '';
     this.section = options.section || '';
     this.deprecated = !!options.deprecated;
     this.hidden = !!options.hidden;

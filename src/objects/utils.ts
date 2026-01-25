@@ -63,6 +63,12 @@ const isArray = ( value: unknown ): value is unknown[] => {
 
 };
 
+const isObject = ( value: unknown ): value is object => {
+
+  return typeof value === 'object' && value !== null;
+
+};
+
 const isUndefined = ( value: unknown ): value is undefined => {
 
   return value === undefined;
@@ -91,4 +97,4 @@ const sum = ( numbers: number[] ): number => {
 
 /* EXPORT */
 
-export {castArray, getClosest, groupBy, identity, isArray, isUndefined, parseArgv, pushBack, stripAnsi, sum, toCamelCase};
+export {castArray, getClosest, groupBy, identity, isArray, isObject, isUndefined, parseArgv, pushBack, stripAnsi, sum, toCamelCase};

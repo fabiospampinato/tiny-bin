@@ -36,7 +36,7 @@ class Option extends Addon {
     this.data = this.parse ( options.name, options.type );
     this.ids = this.data.alls;
     this.name = options.name;
-    this.description = options.description;
+    this.description = options.description || '';
     this.section = options.section || '';
     this.deprecated = !!options.deprecated;
     this.eager = !!options.eager;

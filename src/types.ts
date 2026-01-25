@@ -7,14 +7,14 @@ import type {ParsedArgs} from 'tiny-parse-argv';
 
 type ArgumentOptions = {
   name: string,
-  description: string
+  description?: string
 };
 
 type ArgumentsParsed = ParsedArgs;
 
 type BinOptions = {
-  name: string,
-  description: string
+  name?: string,
+  description?: string
 };
 
 type CommandHandler = {
@@ -23,7 +23,7 @@ type CommandHandler = {
 
 type CommandOptions = {
   name: string,
-  description: string,
+  description?: string,
   section?: string,
   deprecated?: boolean,
   hidden?: boolean
@@ -52,7 +52,7 @@ type OptionData = {
 
 type OptionOptions = {
   name: string,
-  description: string,
+  description?: string,
   section?: string,
   deprecated?: boolean,
   eager?: boolean,
