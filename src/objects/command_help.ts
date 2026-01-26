@@ -42,6 +42,8 @@ class CommandHelp extends Command {
 
     if ( name ) {
 
+      //TODO: Printing multiple options groups with the same name feel a bit wrong, though the separation seems good
+
       const command = this.bin.commands.getByIdOrFail ( name );
       const mode = this.getPrintMode ([ command.arguments, command.options, this.bin.command.options ]);
 
@@ -57,8 +59,6 @@ class CommandHelp extends Command {
     } else {
 
       const mode = this.getPrintMode ([ this.bin.command.arguments, this.bin.command.options, this.bin.commands ]);
-
-      //TODO: Printing multiple options groups with the same name feel a bit wrong, though the separation seems good
 
       this.stdout.indent ();
       this.stdout.print ();
