@@ -88,6 +88,7 @@ bin ( 'gitman', 'A simple yet powerful opinionated tool for managing repositorie
   .option ( '--verbose, -V', 'Verbose output' )
   .option ( '--provider, -p <provider>', 'The provider to use', { default: 'github', enum: ['github', 'gitlab'] } )
   .option ( '--token, -t <token>', 'GitHub/GitLab personal access token', { required: true } )
+  .option ({ name: '--example, -e <foo>', description: 'An example option configuration provided as a single object' })
   /* DEFAULT COMMAND ARGUMENTS */
   .argument ( '[user]', 'The name of the user' )
   .argument ( '<repo>', 'The name of the repository' )
