@@ -67,7 +67,7 @@ class Option extends Addon {
     const shorts: string[] = [];
     const args: string[] = [];
 
-    const re = /--([a-z0-9-\.]+)|-([a-zA-Z\.])|<([^>.]+(?:\.\.\.)?)>|([\s,])|([^])/g;
+    const re = /--([a-z0-9-\.]+)|-([a-zA-Z\.])|<([^>.]+)(?:\.\.\.)?>|([\s,])|([^])/g;
 
     name.replace ( re, ( _, long, short, arg, spacer, invalid ): string => {
       if ( long && long.startsWith ( 'no-' ) ) longsPositive.push ( long.slice ( 3 ) );
