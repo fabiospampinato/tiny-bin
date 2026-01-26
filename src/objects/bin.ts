@@ -65,8 +65,6 @@ class Bin {
 
   async run ( argv: string[] = process.argv.slice ( 2 ) ): Promise<void> {
 
-    // process.title = this.config.name; //FIXME: It seems useless inside VSCODE, and not working as expected inside Terminal.app, so...
-
     if ( !this.config.package || !this.config.version ) {
 
       const pkg = getCurrentPackage ();
