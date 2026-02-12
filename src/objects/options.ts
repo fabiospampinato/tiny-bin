@@ -42,7 +42,7 @@ class Options extends Collection<Option> {
               ...option.data.shorts.sort ().map ( short => colors.green ( `-${short}` ) ),
             ].join ( ', ' ),
             [
-              ...option.data.args.sort ().map ( arg => colors.blue ( `<${arg}>` ) )
+              ...option.data.args.sort ().map ( arg => colors.blue ( `<${arg}${option.variadic ? '...' : ''}>` ) )
             ].join ( ' ' ),
           ].join ( ' ' ),
           option.description
