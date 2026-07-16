@@ -61,7 +61,7 @@ This library has 5 primitives -- bins, commands, options, arguments and actions:
   - An action is the function that will be called when running your command.
   - It will receive the following arguments:
     - The options object, containing all options for which the library has a value.
-    - The arguments array, contaning an array of strings passed to your command.
+    - The arguments array, containing an array of strings passed to your command.
     - The passthrough arguments array, containing an array of strings passed to your command after the special `--` separator.
 
 ## Install
